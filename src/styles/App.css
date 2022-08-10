@@ -1,0 +1,140 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+.signinbutton{
+  position: fixed;
+  left: 47%;
+  top: 60%;
+  background-color: rgb(192, 192, 192);
+  border: none;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.signoutbutton{
+  position: absolute;
+  left: 80%;
+  top: 140px;
+  background-color: rgb(192, 192, 192);
+  border: none;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+.viewtable{
+  position: absolute;
+  top: 33%;
+  left: 22%;
+}
+table,
+th,
+td {
+  
+border: 1px solid grey;
+border-collapse: collapse;
+}
+
+th,
+td {
+padding: 10px 80px;
+}
+
+th {
+color: white;
+background-color: black;
+}
+
+tr:nth-child(odd) {
+background-color: #eeeeee;
+}
+
+tr:hover {
+background-color: #dddddd;
+}
+
+.createsubscription, .viewsubscription{
+  position: absolute;
+  top: 15%;
+  right: 33.97%;
+  background-color: #3b6e8b;
+  border-radius: 30px;
+  
+  height: 60px;
+  width: 150px;
+  font-family: "Varela";
+  font-style: normal;
+  font-size: 22px;
+  line-height: 0px;
+  cursor: pointer;
+  color: rgb(244, 244, 244);
+}
+.createsubscription:hover, .viewsubscription:hover{
+  background-color: #2f4b68;
+}
+
+.createsubscription{
+ 
+  left: 35%;
+  bottom: 59.52%;
+}
+
+.viewsubscription{
+  left: 50%;
+  bottom: 45.78%;
+}
+
+.coming{
+  font-size: 50px;
+}
+
+.subslisthead{
+  position: fixed;
+  left: 41%;
+  top: 30%;
+  color: black;
+  background-color: #dfe5ed;
+  padding: 20px;
+  font-size: 20px;
+  border-radius: 5px;
+}

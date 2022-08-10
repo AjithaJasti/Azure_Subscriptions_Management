@@ -1,0 +1,78 @@
+
+.title {
+  position: absolute;
+  left: 19.33%;
+  right: 19.39%;
+  top: 15%;
+  /* bottom: 76.63%; */
+
+  background: #2e5368;
+  border-radius: 62px;
+}
+
+.title > h1 {
+  position: relative;
+  left: 31.54%;
+  /* right: 31.54%;
+  top: 0%;
+   bottom: 70%;  */
+
+  font-family: "Varela";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 47px;
+  color: #ffffff;
+}
+
+.forms {
+  padding: 40%;
+  padding-top: 10%;
+  color: black;
+}
+
+.forms > label {
+  display: inline-block;
+  margin-top: 10px;
+  width: 500px;
+  vertical-align: top;
+  font-size: 20px;
+}
+
+/* .forms > label::before,
+.forms > button::before {
+  content: "\A";
+} */
+
+.forms > button {
+  position: relative;
+  padding: 0.5 rem;
+  width: 150px;
+  height: 50px;
+  left: 35%;
+  margin-top: 2rem;
+  background: #4766b5;
+  border-radius: 31px;
+  color: white;
+  font-size: 20px;
+}
+
+.forms > input,
+.forms > select,
+.forms > textarea {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 400px;
+  max-width: 400px;
+  margin-top: 5px;
+  top: 50%;
+  padding: 8px;
+  background: #e2e2e2;
+  border: 2px solid #aaaaaa;
+  border-radius: 10px;
+}
+
+.forms > textarea {
+  min-height: 100px;
+}
+
