@@ -6,15 +6,11 @@ import { loginRequest } from "./authConfig";
 import { useState } from "react";
 import axios from "axios";
 import { createSubscription } from "../graph";
-
-
 const dept = ["IT", "Eng", "Sales"];
 const env = ["Prod", "Dev"];
 
-export const Registration = (props) => {
-  console.log(props.sampleData.value[0].properties.enrollmentAccounts[0].id);
+export const TagsCreation = () => {
   const [values, setValues] = useState({
-    name: "",
     dept: "",
     env: "",
     cost: "",
@@ -28,37 +24,32 @@ export const Registration = (props) => {
     };
   };
 
-  // const saveFormData = async () => {
-  //   const response = fetch("/successful", {
-  //     method: "POST",
-  //     body: JSON.stringify(values)
-  //   });
-  //   if (response.status !== 200) {
-  //     throw new Error(`Request failed: ${response.status}`);
-  //   }
-  // };
-
-  
   const saveFormData = async () => {
 
 
     const headers = new Headers();
     const bearer = `Bearer ${localStorage.getItem("BearerToken")}`;
     headers.append("Authorization", bearer);
+    headers.append("Content-Type", "application/json");
+
 
     const dataoptions={
 
       method: "PUT",
         headers: headers,
         body: JSON.stringify({
-        properties: {
-            "billingScope": props.sampleData.value[0].properties.enrollmentAccounts[0].id ,
-            "DisplayName": values.name, //Subscription Display Name
-            "Workload": "Production"
-        }
-    })
+            "properties": {
+                "tags": {
+                "department" : values.dept,
+                "environment": values.env,
+                "Estimated Cost" : values.cost,
+                "cost_center": values.costcenter,
+                "glaccount" : values.glaccount,
+                }
+              }
+        })
   };
-    await fetch('https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01',dataoptions)
+    await fetch('https://management.azure.com/subscriptions/1dd3a96f-3b91-4776-bc69-60cc764a14c6/providers/Microsoft.Resources/tags/default?api-version=2021-04-01',dataoptions)
     .then((data) => {
       console.log(data);
     })
@@ -71,10 +62,9 @@ export const Registration = (props) => {
   const onSubmit = event => {
     event.preventDefault(); // Prevent default submission
     try {
-      saveFormData();
+     saveFormData();
       alert("Subscription created Successfully!");
       setValues({
-        name: "",
         dept: "",
         env: "",
         cost: "",
@@ -88,17 +78,13 @@ export const Registration = (props) => {
     console.log(values)
   };
 
-//techops-admin-subscription
-
-  return (
+return (
     <>
       <div className="title">
         {/* <h1>Enter details to create a subscription </h1>{" "} */}
       </div>
-      <div>
+      <div className="tagform">
         <form onSubmit={onSubmit} className="forms">
-          <label>Subscription Name</label>
-          <input required value={values.name} onChange={set("name")} />
 
           <label> Department </label>
           <select required value={values.dept} onChange={set("dept")}>
@@ -139,15 +125,13 @@ export const Registration = (props) => {
   );
 }
 
-export default function Createsubscriptions() {
+export default function Tag() {
   return (
     <>
-      <Header />
-      <div className="Subscriptions">
-        <Registration />
+      {/* <Header /> */}
+      <div>
+        <TagsCreation />
       </div>
     </>
   );
 }
-
-// export default Createsubscriptions;

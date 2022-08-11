@@ -75,6 +75,22 @@ const Creation = () => {
     );
 };
 
+const Tags = () => {
+    
+    return (
+        <>
+           
+                <div className="buttons">
+                <Link to="/tag" className="Links">
+                <Button className= "tags"> Tags </Button>
+                </Link>
+                </div>
+        </>
+    );
+};
+
+
+
 /**
  * If a user is authenticated the ProfileContent component above is rendered. Otherwise a message indicating a user is not authenticated is rendered.
  */
@@ -82,11 +98,11 @@ const MainContent = () => {
     return (
         <div className="App">
             <AuthenticatedTemplate>
-                <Creation />
-            </AuthenticatedTemplate>
 
-            <AuthenticatedTemplate>
+                <Creation />
                 <SubscriptionContent />
+                <Tags />
+
             </AuthenticatedTemplate>
 
             <UnauthenticatedTemplate>     

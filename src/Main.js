@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Createsubscriptions from "./components/Createsubscriptions";
 import App from "./App";
-import View from "./View";
+import Tag from "./components/Tag"
 
 function Main() {
   return (
@@ -9,7 +9,7 @@ function Main() {
         <Routes>
             <Route exact path="/createsubscriptions" element={<Createsubscriptions/>} />
             <Route exact path="/" element={<App />} />
-            {/* <Route exact path="/view" element={<View />} /> */}
+            <Route exact path="/tag" element={<Tag />} />
 
             </Routes>
       </Router>

@@ -93,7 +93,7 @@ tr:hover {
 background-color: #dddddd;
 }
 
-.createsubscription, .viewsubscription{
+.createsubscription, .viewsubscription, .tags{
   position: absolute;
   top: 15%;
   right: 33.97%;
@@ -115,12 +115,17 @@ background-color: #dddddd;
 
 .createsubscription{
  
-  left: 35%;
+  left: 25%;
   bottom: 59.52%;
 }
 
 .viewsubscription{
-  left: 50%;
+  left: 40%;
+  bottom: 45.78%;
+}
+
+.tags{
+  left: 55%;
   bottom: 45.78%;
 }
 
