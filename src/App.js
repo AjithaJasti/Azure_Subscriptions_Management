@@ -11,6 +11,7 @@ import { Registration } from "./components/Createsubscriptions";
 
 
 
+
 const Creation = () => {
     const { instance, accounts } = useMsal();
     const [sampleData, setSampleData] = useState(null);
@@ -31,7 +32,7 @@ const Creation = () => {
         {sampleData ? 
             <>
             <Button className= "createsubscription" onClick={RequestCreateData}>Create </Button>
-                <Registration sampleData={sampleData} />
+            <Registration sampleData={sampleData} />
                 </>
                 : 
                 <div>
@@ -63,7 +64,7 @@ const Creation = () => {
             {sampleData ? 
             <>
             <Button className= "viewsubscription" onClick={RequestSubsData}> View </Button>
-                <SampleData sampleData={sampleData} />
+            <SampleData sampleData={sampleData} />
                 </>
                 : 
                 <div className="buttons">
@@ -103,7 +104,6 @@ const MainContent = () => {
 
                 <Creation />
                 <SubscriptionContent />
-                {/* <Tags /> */}
 
             </AuthenticatedTemplate>
 

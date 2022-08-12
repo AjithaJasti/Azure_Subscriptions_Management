@@ -38,8 +38,7 @@ class Tenantdropdown extends Component {
       localStorage.setItem('tenantId',event.target.value)
       localStorage.setItem('clientId',tenantoptions.filter(option => option.tenantId === event.target.value)[0].clientId)
         this.setState({          
-          tenantId: event.target.value,
-          clientId: tenantoptions.filter(option => option.tenantId === event.target.value)[0].clientId,         
+          tenantId: event.target.value,        
         });
     }
 
@@ -47,21 +46,19 @@ class Tenantdropdown extends Component {
       console.log("local storage",localStorage.getItem('clientId'))
         // console.log(this.state)
 
-
             return ( 
                 <div className="Box">
                     <h1 className="tenanttitle"> Tenant Selection</h1>
 
                     <div className="drop">
 
-                        <select value = {this.state.tenantId} onChange={this.handleTenantChange}>
+                        <select value = {this.state.tenantId} onChange={this.handleTenantChange} >
                         {
                             tenantoptions.map((option) => (
                             <option key = {option.tenantId} value = {option.tenantId} >{option.tenantname}</option>
                         ))}
                         </select>
 
-                    {/* <p>You selected {this.state.tenant} </p> */}
                     </div>
             </div>
         );

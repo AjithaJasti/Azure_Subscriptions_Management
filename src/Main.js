@@ -5,10 +5,10 @@ import Tag from "./components/Tag"
 
 function Main() {
   return (
-      <Router forceRefresh={true}>
+      <Router>
         <Routes>
-            <Route exact path="/createsubscriptions" element={<Createsubscriptions/>} />
             <Route exact path="/" element={<App />} />
+            <Route exact path="/createsubscriptions" element={<Createsubscriptions/>} />
             <Route exact path="/tag" element={<Tag/>} />
           </Routes>
       </Router>
