@@ -1,18 +1,9 @@
-import Header from "./Header";
-import { Redirect } from "react-router-dom";
-import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
 import "./Createsubscriptions.css";
-import { loginRequest } from "./authConfig";
 import { useState } from "react";
-import axios from "axios";
-import { createSubscription } from "../graph";
-import { useLocation, Link } from "react-router-dom";
-
+import { useLocation } from "react-router-dom";
 
 const dept = ["IT", "Eng", "Sales"];
 const env = ["Prod", "Dev"];
-
-
 
 export const TagsCreation = (props) => {
   const subscriptionId = props.dataprops

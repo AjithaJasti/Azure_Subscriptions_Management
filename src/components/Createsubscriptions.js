@@ -1,16 +1,7 @@
 import Header from "./Header";
-import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
 import "./Createsubscriptions.css";
-import { loginRequest } from "./authConfig";
 import { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import { createSubscription } from "../graph";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-
-const dept = ["IT", "Eng", "Sales"];
-const env = ["Prod", "Dev"];
 
 export const Registration = (props) => {
   console.log(props.sampleData.value[0].properties.enrollmentAccounts[0].id);
@@ -123,5 +114,3 @@ export default function Createsubscriptions() {
     </>
   );
 }
-
-// export default Createsubscriptions;

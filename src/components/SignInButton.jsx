@@ -5,7 +5,17 @@ import Tenantdropdown from "./Tenantdropdown";
 
 export const SignInButton = () => {
     const { instance } = useMsal();
+    
     const handleLogin = (loginType) => {
+        console.log(instance.Msal2Provider)
+        instance.initialize()
+        instance.config['auth']['clientId'] = localStorage.getItem("clientId")
+        instance.config['auth']['authority'] = "https://login.microsoftonline.com/" + localStorage.getItem("tenantId")
+        instance.browserStorage['clientId'] = localStorage.getItem("clientId")
+        instance.performanceClient['clientId'] = localStorage.getItem("clientId")
+        instance.performanceClient['authority'] = "https://login.microsoftonline.com/" + localStorage.getItem("tenantId")
+        instance.tokenCache.config['auth'] = instance.config['auth']
+        instance.tokenCache.storage['clientId'] = localStorage.getItem("clientId")
         if (loginType === "popup") {
             
             instance.loginPopup(loginRequest).catch(e => {
@@ -23,14 +33,7 @@ export const SignInButton = () => {
     return (
         <>
         <Tenantdropdown />
-{/* 
-        <DropdownButton  variant="secondary" className="signbutton" drop="left" title="Sign In">
-            <Dropdown.Item as="button" onClick={() => handleLogin("popup")}>Sign in using Popup</Dropdown.Item>
-            <Dropdown.Item as="button" onClick={() => handleLogin("redirect")}>Sign in using Redirect</Dropdown.Item>
-        </DropdownButton> */}
-
         <button variant="secondary" className="signinbutton" onClick={() => handleLogin("redirect")}> Sign in </button>
-
         </>
     )
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import { useRef, useState, useEffect, useContext } from "react";
 /**
  * Renders information about the user obtained from MS Graph
  * @param props 
