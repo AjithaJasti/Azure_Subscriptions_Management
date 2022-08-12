@@ -6,10 +6,17 @@ import { loginRequest } from "./authConfig";
 import { useState } from "react";
 import axios from "axios";
 import { createSubscription } from "../graph";
+import { useLocation, Link } from "react-router-dom";
+
+
 const dept = ["IT", "Eng", "Sales"];
 const env = ["Prod", "Dev"];
 
-export const TagsCreation = () => {
+
+
+export const TagsCreation = (props) => {
+  const subscriptionId = props.dataprops
+  console.log(subscriptionId)
   const [values, setValues] = useState({
     dept: "",
     env: "",
@@ -31,7 +38,7 @@ export const TagsCreation = () => {
     const bearer = `Bearer ${localStorage.getItem("BearerToken")}`;
     headers.append("Authorization", bearer);
     headers.append("Content-Type", "application/json");
-
+    console.log("sub",subscriptionId)
 
     const dataoptions={
 
@@ -49,7 +56,7 @@ export const TagsCreation = () => {
               }
         })
   };
-    await fetch('https://management.azure.com/subscriptions/1dd3a96f-3b91-4776-bc69-60cc764a14c6/providers/Microsoft.Resources/tags/default?api-version=2021-04-01',dataoptions)
+    await fetch(`https://management.azure.com/subscriptions/${subscriptionId}/providers/Microsoft.Resources/tags/default?api-version=2021-04-01`,dataoptions)
     .then((data) => {
       console.log(data);
     })
@@ -81,7 +88,7 @@ export const TagsCreation = () => {
 return (
     <>
       <div className="title">
-        {/* <h1>Enter details to create a subscription </h1>{" "} */}
+        <h1>Enter details to create tags </h1>
       </div>
       <div className="tagform">
         <form onSubmit={onSubmit} className="forms">
@@ -125,12 +132,13 @@ return (
   );
 }
 
-export default function Tag() {
+export default function Tag(props) {
+  const location = useLocation();
   return (
     <>
       {/* <Header /> */}
       <div>
-        <TagsCreation />
+        <TagsCreation dataprops = {location.state}/>
       </div>
     </>
   );

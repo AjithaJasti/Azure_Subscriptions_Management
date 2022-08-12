@@ -1,7 +1,6 @@
 import React from 'react'
 import { Component } from "react";
 import "./Tenantdropdown.css"
-import { msalConfig } from "./authConfig";
 
 const tenantoptions = [
   {
@@ -33,24 +32,28 @@ class Tenantdropdown extends Component {
     state = {
       clientId : "", 
       tenantId : "",
+      msalInstance : ""
 
     }    
     handleTenantChange =  event => {
       event.preventDefault();
+      window.localStorage.clear();
+      localStorage.setItem('tenantId',event.target.value)
+      localStorage.setItem('clientId',tenantoptions.filter(option => option.tenantId === event.target.value)[0].clientId)
         this.setState({          
           tenantId: event.target.value,
-          clientId: tenantoptions.filter(option => option.tenantId === event.target.value)[0].clientId 
+          clientId: tenantoptions.filter(option => option.tenantId === event.target.value)[0].clientId,
+           
         });
-        localStorage.setItem('tenantId',event.target.value)
-        localStorage.setItem('clientId',tenantoptions.filter(option => option.tenantId === event.target.value)[0].clientId)
+         
+       
         
 
     }
 
       render() {
-        console.log("local storage",localStorage.getItem('tenantId'))
-        console.log(this.state)
-        console.log("msalConfig",msalConfig)
+        console.log("local storage",localStorage.getItem('clientId'))
+        // console.log(this.state)
 
 
             return ( 
@@ -64,6 +67,8 @@ class Tenantdropdown extends Component {
                             <option key = {option.tenantId} value = {option.tenantId} >{option.tenantname}</option>
                         ))}
                         </select>
+                      
+
                     {/* <p>You selected {this.state.tenant} </p> */}
                     </div>
                     {/* <msalConfig tenantId={this.state.tenantId} /> */}

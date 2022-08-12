@@ -9,8 +9,8 @@ import Tenantdropdown from "./Tenantdropdown";
 
 export const msalConfig = {
     auth: {
-        clientId: localStorage.getItem('clientId'),
-        authority: "https://login.microsoftonline.com/" + localStorage.getItem('tenantId')  ,
+        clientId: localStorage.getItem("clientId"),
+        authority: "https://login.microsoftonline.com/" + localStorage.getItem("tenantId")  ,
         redirectUri: "http://localhost:3000/"
     },
     cache: {
@@ -52,6 +52,8 @@ export const msalConfig = {
  */
 export const loginRequest = {
     scopes: ["https://management.azure.com/user_impersonation"]
+
+
 };
 
 /**

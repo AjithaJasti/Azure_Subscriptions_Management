@@ -12,7 +12,6 @@ import Main from "./Main";
  * Initialize a PublicClientApplication instance which is provided to the MsalProvider component
  * We recommend initializing this outside of your root component to ensure it is not re-initialized on re-renders
  */
-//  window.localStorage.clear();
 const msalInstance = new PublicClientApplication(msalConfig);
 
 // const msalInstance = new PublicClientApplication({

@@ -64,8 +64,10 @@
 
 .viewtable{
   position: absolute;
-  top: 33%;
-  left: 22%;
+  margin: 15% 5%;
+  padding: 10% 1%;
+  /* top: 33%; */
+  /* left: 22%; */
 }
 table,
 th,
@@ -95,19 +97,14 @@ background-color: #dddddd;
 
 .createsubscription, .viewsubscription, .tags{
   position: absolute;
-  top: 15%;
-  right: 33.97%;
-  background-color: #3b6e8b;
-  border-radius: 30px;
-  
-  height: 60px;
-  width: 150px;
-  font-family: "Varela";
-  font-style: normal;
-  font-size: 22px;
-  line-height: 0px;
+  left: 80%;
+  top: 140px;
+  background-color: #476686;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-size: 20px;
   cursor: pointer;
-  color: rgb(244, 244, 244);
 }
 .createsubscription:hover, .viewsubscription:hover{
   background-color: #2f4b68;
@@ -115,13 +112,13 @@ background-color: #dddddd;
 
 .createsubscription{
  
-  left: 25%;
-  bottom: 59.52%;
+  left: 35%;
+  /* bottom: 59.52%; */
 }
 
 .viewsubscription{
-  left: 40%;
-  bottom: 45.78%;
+  left: 50%;
+  /* bottom: 45.78%; */
 }
 
 .tags{

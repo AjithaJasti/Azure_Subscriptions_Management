@@ -1,11 +1,12 @@
 import Header from "./Header";
-import { Redirect } from "react-router-dom";
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
 import "./Createsubscriptions.css";
 import { loginRequest } from "./authConfig";
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { createSubscription } from "../graph";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 const dept = ["IT", "Eng", "Sales"];
@@ -21,6 +22,7 @@ export const Registration = (props) => {
     costcenter: "",
     glaccount: ""
   });
+  const [responsedata, setResponsedata] = useState([]);
   
   const set = (names) => {
     return ({ target: { value } }) => {
@@ -61,6 +63,7 @@ export const Registration = (props) => {
     await fetch('https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01',dataoptions)
     .then((data) => {
       console.log(data);
+      setResponsedata(data.value[0].properties.subscriptionId)
     })
     .catch((err) => {
       console.log(err);
@@ -92,47 +95,18 @@ export const Registration = (props) => {
 
   return (
     <>
-      <div className="title">
-        {/* <h1>Enter details to create a subscription </h1>{" "} */}
-      </div>
-      <div>
-        <form onSubmit={onSubmit} className="forms">
+      {/* <div className="title">
+        <h1>Enter details to create a subscription </h1>{" "}
+      </div> */}
+      <div className="divcreateform">
+        <form onSubmit={onSubmit} className="createforms">
           <label>Subscription Name</label>
-          <input required value={values.name} onChange={set("name")} />
+          <input required value={values.name} placeholder= "Enter the subscription name" onChange={set("name")} />
 
-          <label> Department </label>
-          <select required value={values.dept} onChange={set("dept")}>
-            <option value="">Select Department</option>
-            {dept.map((c) => (
-              <option key={c} value={c}>{c}</option>
-            ))}
-          </select>
+          <Link to= "/tag" state= "1dd3a96f-3b91-4776-bc69-60cc764a14c6" className="Links">
+          <button type="submit" className="buttoncreatesubmit">Next</button>
+          </Link>
 
-          <label> Environment </label>
-          <select required value={values.env} onChange={set("env")}>
-            <option value="">Select Environment </option>
-            {env.map((c) => (
-              <option key={c} value={c}>{c}</option>
-            ))}
-          </select>
-
-          <label>Monthly Estimated Cost*:</label>
-          <input
-            type="number"
-            // required
-            min="1"
-            value={values.cost}
-            onChange={set("cost")}
-          />
-
-          <label>Cost center:</label>
-          <input value={values.costcenter} onChange={set("costcenter")} />
-
-          <label>GL Account:</label>
-          <input value={values.glaccount} onChange={set("glaccount")} />
-
-          
-          <button type="submit">Submit</button>
         </form>
       </div>
     </>

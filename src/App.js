@@ -9,6 +9,8 @@ import "./styles/App.css";
 import { Link } from "react-router-dom";
 import { Registration } from "./components/Createsubscriptions";
 
+
+
 const Creation = () => {
     const { instance, accounts } = useMsal();
     const [sampleData, setSampleData] = useState(null);
@@ -101,7 +103,7 @@ const MainContent = () => {
 
                 <Creation />
                 <SubscriptionContent />
-                <Tags />
+                {/* <Tags /> */}
 
             </AuthenticatedTemplate>
 
