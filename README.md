@@ -46,4 +46,4 @@ This sample demonstrates the following MSAL React concepts:
 ## Running the sample
 
 1. To start the sample application, run `npm start`.
-2. Finally, open a browser and navigate to [http://localhost:3000](http://localhost:3000).
+2. Finally, open a browser and navigate to [http://localhost:3000].

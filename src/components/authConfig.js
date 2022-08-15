@@ -1,11 +1,4 @@
 import { LogLevel } from "@azure/msal-browser";
-import Tenantdropdown from "./Tenantdropdown";
-/**
- * Configuration object to be passed to MSAL instance on creation. 
- * For a full list of MSAL.js configuration parameters, visit:
- * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md 
- */
-// const tenantId = this.props.tenantId;
 
 export const msalConfig = {
     auth: {

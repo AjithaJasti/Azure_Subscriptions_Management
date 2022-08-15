@@ -1,8 +1,6 @@
 import Header from "./Header";
 import "./Createsubscriptions.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import Tag from "./Tag";
 import {useNavigate} from 'react-router-dom';
 
 export const Registration = (props) => {
