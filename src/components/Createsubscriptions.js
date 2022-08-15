@@ -2,18 +2,16 @@ import Header from "./Header";
 import "./Createsubscriptions.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Tag from "./Tag";
+import {useNavigate} from 'react-router-dom';
 
 export const Registration = (props) => {
-  console.log(props.sampleData.value[0].properties.enrollmentAccounts[0].id);
+  // console.log(props.sampleData.value[0].properties.enrollmentAccounts[0].id);
   const [values, setValues] = useState({
     name: "",
-    dept: "",
-    env: "",
-    cost: "",
-    costcenter: "",
-    glaccount: ""
   });
   const [responsedata, setResponsedata] = useState([]);
+  const navigate = useNavigate();
   
   const set = (names) => {
     return ({ target: { value } }) => {
@@ -65,16 +63,12 @@ export const Registration = (props) => {
   const onSubmit = event => {
     event.preventDefault(); // Prevent default submission
     try {
-      saveFormData();
+      // saveFormData();
       alert("Subscription created Successfully!");
       setValues({
-        name: "",
-        dept: "",
-        env: "",
-        cost: "",
-        costcenter: "",
-        glaccount: ""
+        name: ""
       });
+      navigate('/Tag', {state:"1dd3a96f-3b91-4776-bc69-60cc764a14c6"});
       
     } catch (e) {
       alert(`Registration failed! ${e.message}`);
@@ -86,17 +80,17 @@ export const Registration = (props) => {
 
   return (
     <>
-      {/* <div className="title">
+      <div className="title">
         <h1>Enter details to create a subscription </h1>{" "}
-      </div> */}
+      </div>
       <div className="divcreateform">
         <form onSubmit={onSubmit} className="createforms">
           <label>Subscription Name</label>
           <input required value={values.name} placeholder= "Enter the subscription name" onChange={set("name")} />
-
-          <Link to= "/tag" state= "1dd3a96f-3b91-4776-bc69-60cc764a14c6" className="Links">
+          {/* <Link to= "/tag" state= "1dd3a96f-3b91-4776-bc69-60cc764a14c6" className="Links"> */}
+          {/* <Link to= "/tag" state= {responsedata} className="Links"> */}
           <button type="submit" className="buttoncreatesubmit">Next</button>
-          </Link>
+          {/* </Link> */}
 
         </form>
       </div>

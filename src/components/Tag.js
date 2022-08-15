@@ -1,12 +1,16 @@
 import "./Createsubscriptions.css";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import Header from "./Header";
+import "./Tag.css";
 
 const dept = ["IT", "Eng", "Sales"];
 const env = ["Prod", "Dev"];
 
 export const TagsCreation = (props) => {
-  const subscriptionId = props.dataprops
+  const location = useLocation();
+  // const subscriptionId = props.dataprops
+  const subscriptionId = location.state
   console.log(subscriptionId)
   const [values, setValues] = useState({
     dept: "",
@@ -78,9 +82,13 @@ export const TagsCreation = (props) => {
 
 return (
     <>
-      <div className="title">
+     {/* <Navbar bg="primary" variant="dark"> */}
+      <Header/>
+      {/* </Navbar> */}
+      <div className="tagtitle">
         <h1>Enter details to create tags </h1>
       </div>
+    
       <div className="tagform">
         <form onSubmit={onSubmit} className="forms">
 
@@ -119,6 +127,7 @@ return (
           <button type="submit">Submit</button>
         </form>
       </div>
+    
     </>
   );
 }

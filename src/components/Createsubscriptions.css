@@ -1,89 +1,34 @@
  .title {
   /* position: absolute; */
-  margin: 5% 20% 1% 20%;
-  padding: 1%;
+  margin: 3% 30% 1% 30%;
+  padding: 0%;
   /* left: 19.33%;
   right: 19.39%;
   top: 15%; 
   bottom: 76.63%; */
 
-  background: #2e5368;
-  border-radius: 62px;
+  background: #ccd5dc;
+  border-radius: 15px;
 }
 
 .title > h1 {
   position: relative;
-  left: 32%;
+  left: 25%;
 
   font-family: "Varela";
   font-style: normal;
   font-weight: 400;
-  font-size: 25px;
+  font-size: 23px;
   line-height: 47px;
-  color: #ffffff;
+  color: #0a0909;
 } 
 
-.tagform {
-  /* margin: 1%; */
-  padding: 1% 20%;
-  /* padding-top: 5%; */
-  color: black;
-  margin-left: 15%;
-  margin-right: 15%;
-
-  /* left: 30%; */
-}
-
-.forms > label {
-  display: inline-block; 
-  margin-top: 10px; 
-  width: 70%;
-  /* vertical-align: top; */
-  font-size: 20px;
-}
-
-.forms >  button {
-  margin-top: 10%;
-  margin-left: 20%;
-  width: 150px;
-  height: 50px;
-  /* left: 45%; */
-  background: #5873b7;
-  border-radius: 31px;
-  color: white;
-  font-size: 20px;
-}
-
-.forms > input,
-.forms > select,
-.forms > textarea {
-  box-sizing: border-box;
-  display: inline-block;
-  width: 400px;
-  max-width: 400px;
-  /* margin-top: 5px; */
-  /* top: 20%; */
-  padding: 10px;
-  background: #e2e2e2;
-  border: 2px solid #aaaaaa;
-  border-radius: 10px;
-}
-
-.forms > textarea {
-  min-height: 100px;
-}
-
-
-
 .divcreateform{
-  margin-top: 5%;
-  padding: 10% 20%;
-  /* padding-top: 5%; */
+  margin: 1% 20% 0% 15%;
+  padding: 1% 20%;
   color: black;
   margin-left: 15%;
   margin-right: 15%;
-
-  /* left: 30%; */
 }
 .createforms > label{
   display: inline-block; 
@@ -96,24 +41,29 @@
 .buttoncreatesubmit{
   position: relative;
   margin-top: 10%;
-  padding: 2% 8%;
-  left: 25%;
-  background: #5873b7;
-  border-radius: 20px;
-  color: white;
-  font-size: 18px;
+  padding: 1% 8%;
+  left: 35%;
+  background: #445ba8;
+  border-radius: 10px;
+  color: rgb(243, 243, 243);
+  border-color: rgb(255, 255, 255);
+  font-size: 19px;
 
+}
+
+.buttoncreatesubmit:hover{
+  background: #444d75;
 }
 .createforms > input,
 .createforms > select,
 .createforms > textarea {
   box-sizing: border-box;
   display: inline-block;
-  width: 400px;
-  max-width: 400px;
+  width: 500px;
+  max-width: 600px;
   /* margin-top: 5px; */
   /* top: 20%; */
-  padding: 10px;
+  padding: 11px;
   background: #e2e2e2;
   border: 2px solid #aaaaaa;
   border-radius: 10px;

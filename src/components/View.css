@@ -1,0 +1,33 @@
+.viewtable{
+    position: absolute;
+    margin: 8% 5%;
+    padding: 10% 1%;
+    /* top: 33%; */
+    /* left: 22%; */
+  }
+  
+  table,
+  th,
+  td {
+    
+  border: 1px solid grey;
+  border-collapse: collapse;
+  }
+  
+  th,
+  td {
+  padding: 10px 80px;
+  }
+  
+  th {
+  color: white;
+  background-color: black;
+  }
+  
+  tr:nth-child(odd) {
+  background-color: #eeeeee;
+  }
+  
+  tr:hover {
+  background-color: #dddddd;
+  }

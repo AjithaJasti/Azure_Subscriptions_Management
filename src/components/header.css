@@ -1,27 +1,21 @@
 .Header {
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 5%;
-    /* bottom: 90.51%; */
-    width: 1728px;
-    height: 106px;
+    margin: 0%;
+    top: 0%;
+    height: 90px;
     background: #000000;
     border-radius: 0px;
-    /* color: #000000; */
   }
   
   .Header > h1 {
     position: absolute;
-    left: 69.39%;
-    right: 5.15%;
-    top: 25px;
-    /* bottom: 80%; */
+    left: 78%;
+    right: 2%;
+    top: 12px;
   
     font-family: "Trirong";
     font-style: normal;
     font-weight: 700;
-    font-size: 36px;
+    font-size: 30px;
     line-height: 62px;
     letter-spacing: 0.06em;
   
@@ -34,5 +28,5 @@
     height: 89px;
     width: 185px;
     left: 85px;
-    top: 17px;
+    top: 1px;
   }

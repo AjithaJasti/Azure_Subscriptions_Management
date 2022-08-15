@@ -2,113 +2,60 @@ import React, { useState } from "react";
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
 import { loginRequest } from "./components/authConfig";
 import { PageLayout } from "./components/PageLayout";
-import { SampleData } from "./components/ProfileData";
 import { createSubscription, listSubscription } from "./graph";
-import Button from "react-bootstrap/Button";
 import "./styles/App.css";
-import { Link } from "react-router-dom";
 import { Registration } from "./components/Createsubscriptions";
+import View from "./components/View";
 
 
-
-
-const Creation = () => {
+const MainContent = () => {  
     const { instance, accounts } = useMsal();
     const [sampleData, setSampleData] = useState(null);
-
-    function RequestCreateData() {
-        // Silently acquires an access token which is then attached to a request for MS Graph data
-        instance.acquireTokenSilent({
-            ...loginRequest,
-            account: accounts[0]
-        }).then((response) => {
-            localStorage.setItem("BearerToken",response.accessToken);
-            createSubscription(response.accessToken).then(response => setSampleData(response));
-        });
-    }
-
-    return (
-        <> 
-        {sampleData ? 
-            <>
-            <Button className= "createsubscription" onClick={RequestCreateData}>Create </Button>
-            <Registration sampleData={sampleData} />
-                </>
-                : 
-                <div>
-                {/* <Link to="/createsubscriptions" className="Links"> */}
-                <Button className= "createsubscription" onClick={RequestCreateData}>Create </Button>
-                {/* </Link> */}
-                </div>
-}
-        </>
-    );
-}
- 
- const SubscriptionContent = () => {
-    const { instance, accounts } = useMsal();
-    const [sampleData, setSampleData] = useState(null);
-
-    function RequestSubsData() {
-        // Silently acquires an access token which is then attached to a request for MS Graph data
-        instance.acquireTokenSilent({
-            ...loginRequest,
-            account: accounts[0]
-        }).then((response) => {
-            listSubscription(response.accessToken).then(response => setSampleData(response));
-        });
-        console.log("Login requested",loginRequest)
-    }
-    return (
-        <>
-            {sampleData ? 
-            <>
-            <Button className= "viewsubscription" onClick={RequestSubsData}> View </Button>
-            <SampleData sampleData={sampleData} />
-                </>
-                : 
-                <div className="buttons">
-                {/* <Link to="/view" className="Links"> */}
-                <Button className= "viewsubscription" onClick={RequestSubsData}> View </Button>
-                {/* </Link> */}
-                </div>
-
-            }
-        </>
-    );
-};
-
-const Tags = () => {
+    const [createData, setCreateData] = useState(null);
+    const [create, setCreate] = useState(false);
+    const [view, setView] = useState(false);
     
-    return (
-        <>
-           
-                <div className="buttons">
-                <Link to="/tag" className="Links">
-                <Button className= "tags"> Tags </Button>
-                </Link>
-                </div>
-        </>
-    );
-};
+    const getToken = (type) => {
 
+        if (type === "create") {
+                instance.acquireTokenSilent({
+                    ...loginRequest,
+                    account: accounts[0]
+                }).then((response) => {
+                    localStorage.setItem("BearerToken",response.accessToken);
+                    createSubscription(response.accessToken).then(data => setCreateData(data));
+                    console.log(createData)
+                });
+                setCreate(true);
+                setView(false);
+          
+         } else {
+            instance.acquireTokenSilent({
+                ...loginRequest,
+                account: accounts[0]
+            }).then((response) => {
+                setSampleData(null)
+                listSubscription(response.accessToken).then(response => setSampleData(response));
+                console.log(sampleData)
+            });
+          setCreate(false);
+          setView(true);
+          
+        }
+      };
 
-
-/**
- * If a user is authenticated the ProfileContent component above is rendered. Otherwise a message indicating a user is not authenticated is rendered.
- */
-const MainContent = () => {    
     return (
         <div className="App">
             <AuthenticatedTemplate>
+                <div className="subscriptionbuttons">
+                <button className= "createsubscription" onClick={() => getToken("create")}>Create</button>
+                <button className= "viewsubscription" onClick={() => getToken("view")}>View</button>
+                </div>
 
-                <Creation />
-                <SubscriptionContent />
-
+                {createData && create &&  <Registration sampleData={createData} />}
+                {sampleData && view && <View sampleData={sampleData}/>} 
             </AuthenticatedTemplate>
 
-            <UnauthenticatedTemplate>     
-            </UnauthenticatedTemplate>
         </div>
     );
 };
@@ -117,7 +64,6 @@ export default function App() {
     return (
         <PageLayout>
             <MainContent />
-         </PageLayout>
-        
+         </PageLayout>       
     );
 }

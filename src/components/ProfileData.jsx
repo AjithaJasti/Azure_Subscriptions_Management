@@ -50,16 +50,3 @@ export const SampleData = (props) => {
         </>
     );
 };
-
-
-export const CreateSubsc = () => {
-
-    return (
-        <div className="title">
-            <h1>Enter details to create a subscription </h1>{" "}
-        </div>
-    
-
-    );
-
-}

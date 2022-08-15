@@ -48,71 +48,56 @@
   font-size: 20px;
   cursor: pointer;
 }
+.signinbutton:hover{
+  background-color: rgb(171, 171, 171);
+  /* color: rgb(0, 0, 0); */
+}
 
 .signoutbutton{
   position: absolute;
-  left: 80%;
-  top: 140px;
-  background-color: rgb(192, 192, 192);
+  /* background-color: rgb(192, 192, 192); */
+  margin-left: 88%;
+  margin-top: 4%;
+  /* color: rgb(0, 0, 0); */
   border: none;
-  padding: 10px 30px;
-  border-radius: 15px;
+  padding: 5px 30px;
+  border-radius: 5px;
+  background-color: rgb(192, 192, 192);
+  border-color: black;
   font-size: 20px;
   cursor: pointer;
 }
+.signoutbutton:hover{
+  background-color: rgb(77, 77, 77);
+  color: white;
+}
 
+.subscriptionbuttons{
+  background-color: #4a6379;
+  padding: 1.5%;
+}
 
-.viewtable{
+.createsubscription, .viewsubscription{
   position: absolute;
-  margin: 15% 5%;
-  padding: 10% 1%;
-  /* top: 33%; */
-  /* left: 22%; */
-}
-table,
-th,
-td {
-  
-border: 1px solid grey;
-border-collapse: collapse;
-}
-
-th,
-td {
-padding: 10px 80px;
-}
-
-th {
-color: white;
-background-color: black;
-}
-
-tr:nth-child(odd) {
-background-color: #eeeeee;
-}
-
-tr:hover {
-background-color: #dddddd;
-}
-
-.createsubscription, .viewsubscription, .tags{
-  position: absolute;
-  left: 80%;
-  top: 140px;
-  background-color: #476686;
+  margin-left: 4%;
+  top: 9.8%;
+  background-color: #4a6379;
+  color: white;
   border: none;
-  padding: 10px 30px;
-  border-radius: 15px;
+  padding: 9px 30px;
+  /* border-radius: 15px; */
+  border-color: black;
   font-size: 20px;
   cursor: pointer;
 }
 .createsubscription:hover, .viewsubscription:hover{
-  background-color: #2f4b68;
+  background-color: #1a2f46;
+
 }
 
 .createsubscription{
  
-  left: 35%;
+  left: 37%;
   /* bottom: 59.52%; */
 }
 
