@@ -16,11 +16,9 @@ export const SignInButton = () => {
         instance.performanceClient['authority'] = "https://login.microsoftonline.com/" + localStorage.getItem("tenantId")
         instance.tokenCache.config['auth'] = instance.config['auth']
         instance.tokenCache.storage['clientId'] = localStorage.getItem("clientId")
-        if (loginType === "popup") {
-            
+        if (loginType === "popup") {     
             instance.loginPopup(loginRequest).catch(e => {
                 console.log(e);
-
             });
 
         } else if (loginType === "redirect") {

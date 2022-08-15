@@ -65,7 +65,7 @@ export const TagsCreation = (props) => {
     event.preventDefault(); // Prevent default submission
     try {
      saveFormData();
-      alert("Subscription created Successfully!");
+      alert("Tags created Successfully!");
       setValues({
         dept: "",
         env: "",
