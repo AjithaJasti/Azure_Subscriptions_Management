@@ -1,8 +1,11 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import "../styles/View.css";
 
-export default function View(props) {
-    console.log(props.sampleData)
+export const Applications = () => {
+    const location = useLocation();
+    console.log(location.state)
+
         return (
             <>
             {/* <h1 className="subslisthead"> Subscriptions List </h1> */}
@@ -11,14 +14,25 @@ export default function View(props) {
                 <table className='viewtable'>
                     <thead>
                         <tr>
+                        <th>
+              <input
+                type="checkbox"
+              />
+            </th>
                             <th>Application ID</th>
                             <th>Application Name</th>
                             <th> Domain</th>
                         </tr>
                     </thead>
                     <tbody>
-                {props.sampleData.value.map((applications) => (
-                  <tr key={applications.appId}>
+                {location.state.applicationsdata.value.map((applications) => (
+                  <tr key={applications.id}>
+                    <td> 
+                  <input
+                    type="checkbox"
+                    value={applications.id}
+                  />
+                </td>
                    <td>  {applications.appId} <br /> </td>
                    <td> {applications.displayName} </td>
                    <td> {applications.publisherDomain} </td>
@@ -28,7 +42,7 @@ export default function View(props) {
     </tbody>
                 </table>
     
-            </div>
+    </div>
             </>
         );
     }

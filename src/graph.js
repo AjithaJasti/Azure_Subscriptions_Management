@@ -35,10 +35,10 @@ export async function createSubscription(accessToken) {
 
 
 
-export async function getApplications(accessToken) {
+export async function getApplications() {
     const headers = new Headers();
-    const bearer = `Bearer ${accessToken}`;
-    console.log(accessToken)
+    const bearer = `Bearer ${localStorage.getItem("BearerToken")}`;
+    console.log(localStorage.getItem("BearerToken"))
     headers.append("Authorization", bearer);
     headers.append("ConsistencyLevel","eventual")
 
@@ -47,7 +47,7 @@ export async function getApplications(accessToken) {
         headers: headers
     };
 
-    return fetch('https://graph.microsoft.com/v1.0/applications?$search="displayName:app-rubrik"', options)
+    return fetch('https://graph.microsoft.com/v1.0/applications?$search="displayName:' + localStorage.getItem("appname") + '"', options)
         .then(response => response.json())
         .catch(error => console.log(error));
 }

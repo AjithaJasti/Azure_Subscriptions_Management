@@ -6,10 +6,11 @@ import { createSubscription, listSubscription, getApplications } from "./graph";
 import "./styles/App.css";
 import { Registration } from "./components/Createsubscriptions";
 import View from "./components/View";
-import Applications from './components/Applications'
+import {Applications} from './components/Applications'
+import {SelectApplication} from './components/SelectApplication'
 
 
-const MainContent = () => {  
+export const MainContent = () => {  
     const { instance, accounts } = useMsal();
     const [sampleData, setSampleData] = useState(null);
     const [createData, setCreateData] = useState(null);
@@ -38,7 +39,6 @@ const MainContent = () => {
                 ...loginRequest,
                 account: accounts[0]
             }).then((response) => {
-                setSampleData(null)
                 listSubscription(response.accessToken).then(response => setSampleData(response));
                 console.log(sampleData)
             });
@@ -52,13 +52,13 @@ const MainContent = () => {
                 ...readRequest,
                 account: accounts[0]
               }).then((response) => {
-                setSampleData(null)
-                getApplications(response.accessToken).then(response => setApplicationsData(response));
-                console.log(applicationsData)
+                localStorage.setItem("BearerToken",response.accessToken);
+                // getApplications(response.accessToken).then(response => setApplicationsData(response));
+                // console.log(applicationsData)
             });
             setCreate(false);
-          setView(false);
-          setApplications(true);
+            setView(false);
+            setApplications(true);
         }
       };
 
@@ -73,8 +73,8 @@ const MainContent = () => {
 
                 {createData && create &&  <Registration sampleData={createData} />}
                 {sampleData && view && <View sampleData={sampleData}/>} 
-                {applicationsData && applications && <Applications sampleData={applicationsData}/>} 
-
+                {/* {applicationsData && applications && <Applications sampleData={applicationsData}/>}  */}
+                {applications && <SelectApplication/>}
             </AuthenticatedTemplate>
 
         </div>
@@ -85,6 +85,6 @@ export default function App() {
     return (
         <PageLayout>
             <MainContent />
-         </PageLayout>       
+        </PageLayout>       
     );
 }

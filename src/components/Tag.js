@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "./Header";
 import "../styles/Tag.css";
+import { MainContent } from "../App";
 
 const dept = ["IT", "Eng", "Sales"];
 const env = ["Prod", "Dev"];
