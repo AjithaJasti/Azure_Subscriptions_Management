@@ -45,8 +45,9 @@ export const msalConfig = {
  */
 export const loginRequest = {
     scopes: ["https://management.azure.com/user_impersonation"]
-
-
+};
+export const readRequest = {
+    scopes: ["User.Read"]
 };
 
 /**

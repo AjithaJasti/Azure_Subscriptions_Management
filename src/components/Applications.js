@@ -11,17 +11,17 @@ export default function View(props) {
                 <table className='viewtable'>
                     <thead>
                         <tr>
-                            <th>Subscription ID</th>
-                            <th>Subscription Name</th>
-                            <th> Tenant Id</th>
+                            <th>Application ID</th>
+                            <th>Application Name</th>
+                            <th> Domain</th>
                         </tr>
                     </thead>
                     <tbody>
-                {props.sampleData.value.map((subscription) => (
-                  <tr key={subscription.id}>
-                   <td>  {subscription.id} <br /> </td>
-                   <td> {subscription.displayName} </td>
-                   <td> {subscription.tenantId} </td>
+                {props.sampleData.value.map((applications) => (
+                  <tr key={applications.appId}>
+                   <td>  {applications.appId} <br /> </td>
+                   <td> {applications.displayName} </td>
+                   <td> {applications.publisherDomain} </td>
                   </tr>
                 ))}
     

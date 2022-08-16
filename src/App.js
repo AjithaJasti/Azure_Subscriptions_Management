@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
-import { loginRequest } from "./components/authConfig";
+import { loginRequest, readRequest } from "./components/authConfig";
 import { PageLayout } from "./components/PageLayout";
-import { createSubscription, listSubscription } from "./graph";
+import { createSubscription, listSubscription, getApplications } from "./graph";
 import "./styles/App.css";
 import { Registration } from "./components/Createsubscriptions";
 import View from "./components/View";
+import Applications from './components/Applications'
 
 
 const MainContent = () => {  
     const { instance, accounts } = useMsal();
     const [sampleData, setSampleData] = useState(null);
     const [createData, setCreateData] = useState(null);
+    const [applicationsData, setApplicationsData] = useState(null);
     const [create, setCreate] = useState(false);
     const [view, setView] = useState(false);
+    const [applications, setApplications] = useState(false);
     
     const getToken = (type) => {
 
@@ -28,8 +31,9 @@ const MainContent = () => {
                 });
                 setCreate(true);
                 setView(false);
+                setApplications(false);
           
-         } else {
+         } else if(type === "view") {
             instance.acquireTokenSilent({
                 ...loginRequest,
                 account: accounts[0]
@@ -40,7 +44,21 @@ const MainContent = () => {
             });
           setCreate(false);
           setView(true);
+          setApplications(false);
           
+        }
+        else if(type==="applications"){
+            instance.acquireTokenSilent({
+                ...readRequest,
+                account: accounts[0]
+              }).then((response) => {
+                setSampleData(null)
+                getApplications(response.accessToken).then(response => setApplicationsData(response));
+                console.log(applicationsData)
+            });
+            setCreate(false);
+          setView(false);
+          setApplications(true);
         }
       };
 
@@ -50,10 +68,13 @@ const MainContent = () => {
                 <div className="subscriptionbuttons">
                 <button className= "createsubscription" onClick={() => getToken("create")}>Create</button>
                 <button className= "viewsubscription" onClick={() => getToken("view")}>View</button>
+                <button className= "applicationssubscription" onClick={() => getToken("applications")}>Applications</button>
                 </div>
 
                 {createData && create &&  <Registration sampleData={createData} />}
                 {sampleData && view && <View sampleData={sampleData}/>} 
+                {applicationsData && applications && <Applications sampleData={applicationsData}/>} 
+
             </AuthenticatedTemplate>
 
         </div>

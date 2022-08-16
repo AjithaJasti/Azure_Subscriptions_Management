@@ -34,21 +34,23 @@ export async function createSubscription(accessToken) {
 }
 
 
-// export async function callMsGraph(accessToken) {
-//     const headers = new Headers();
-//     const bearer = `Bearer ${accessToken}`;
-//     console.log(accessToken)
-//     headers.append("Authorization", bearer);
 
-//     const options = {
-//         method: "GET",
-//         headers: headers
-//     };
+export async function getApplications(accessToken) {
+    const headers = new Headers();
+    const bearer = `Bearer ${accessToken}`;
+    console.log(accessToken)
+    headers.append("Authorization", bearer);
+    headers.append("ConsistencyLevel","eventual")
 
-//     return fetch(graphConfig.graphMeEndpoint, options)
-//         .then(response => response.json())
-//         .catch(error => console.log(error));
-// }
+    const options = {
+        method: "GET",
+        headers: headers
+    };
+
+    return fetch('https://graph.microsoft.com/v1.0/applications?$search="displayName:app-rubrik"', options)
+        .then(response => response.json())
+        .catch(error => console.log(error));
+}
 
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Component } from "react";
-import "./Tenantdropdown.css"
+import "../styles/Tenantdropdown.css"
 
 const tenantoptions = [
   {

@@ -1,7 +1,7 @@
 import Header from "./Header";
-import "./Createsubscriptions.css";
 import { useState } from "react";
 import {useNavigate} from 'react-router-dom';
+import "../styles/Createsubscriptions.css";
 
 export const Registration = (props) => {
   // console.log(props.sampleData.value[0].properties.enrollmentAccounts[0].id);

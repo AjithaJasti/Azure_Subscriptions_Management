@@ -35,7 +35,7 @@
   padding: 1.5%;
 }
 
-.createsubscription, .viewsubscription{
+.createsubscription, .viewsubscription, .applicationssubscription{
   position: absolute;
   margin-left: 4%;
   top: 9.8%;
@@ -47,16 +47,19 @@
   font-size: 20px;
   cursor: pointer;
 }
-.createsubscription:hover, .viewsubscription:hover{
+.createsubscription:hover, .viewsubscription:hover, .applicationssubscription:hover{
   background-color: #1a2f46;
 
 }
 
 .createsubscription{
-  left: 37%;
+  left: 28%;
 }
 
 .viewsubscription{
-  left: 50%;
+  left: 38%;
+}
+.applicationssubscription{
+  left: 48%;
 }
 

@@ -1,8 +1,7 @@
-import "./Createsubscriptions.css";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "./Header";
-import "./Tag.css";
+import "../styles/Tag.css";
 
 const dept = ["IT", "Eng", "Sales"];
 const env = ["Prod", "Dev"];
