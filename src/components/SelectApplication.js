@@ -3,10 +3,13 @@ import { useState } from "react";
 import "../styles/SelectApplication.css"
 import {useNavigate} from 'react-router-dom';
 import { Applications } from "./Applications";
+import Header from "./Header";
+import { useLocation } from "react-router-dom";
 
 
 export const SelectApplication = () => {
     console.log("Entered")
+    const location = useLocation();
     const navigate = useNavigate();
     const [values, setValues] = useState({
         appname: "",
@@ -32,7 +35,7 @@ export const SelectApplication = () => {
                     headers: headers
                 
                 };
-                return fetch('https://graph.microsoft.com/v1.0/applications?$search="displayName:' + values.appname + '"', dataoptions)
+                return fetch('https://graph.microsoft.com/v1.0/servicePrincipals?$search="displayName:' + values.appname + '"', dataoptions)
                 .then(response => response.json())
                 .catch(error => console.log(error));
         };
@@ -54,10 +57,11 @@ export const SelectApplication = () => {
 
         return (
             <>
+            <Header />
             
             {
                 applicationsdata ?
-                    navigate('/Applications', {state : {applicationsdata}})
+                    navigate('/Applications', {state : {applicationsdata} })
                 : 
                     <div className="appform">
                         <form onSubmit={onSubmit} className="appforms">

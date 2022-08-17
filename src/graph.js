@@ -3,7 +3,7 @@ export async function listSubscription(accessToken) {
     const bearer = `Bearer ${accessToken}`;
     console.log(accessToken)
     headers.append("Authorization", bearer);
-    localStorage.setItem("BearerToken",accessToken)
+    localStorage.setItem("BearerMicrosoftToken",accessToken)
 
     const options = {
         method: "GET",
@@ -21,7 +21,7 @@ export async function createSubscription(accessToken) {
     const bearer = `Bearer ${accessToken}`;
     console.log(accessToken)
     headers.append("Authorization", bearer);
-    localStorage.setItem("BearerToken",accessToken)
+    localStorage.setItem("BearerMicrosoftToken",accessToken)
 
     const options = {
         method: "GET",
@@ -47,7 +47,7 @@ export async function getApplications() {
         headers: headers
     };
 
-    return fetch('https://graph.microsoft.com/v1.0/applications?$search="displayName:' + localStorage.getItem("appname") + '"', options)
+    return fetch('https://graph.microsoft.com/v1.0/servicePrincipals?$search="displayName:' + localStorage.getItem("appname") + '"', options)
         .then(response => response.json())
         .catch(error => console.log(error));
 }

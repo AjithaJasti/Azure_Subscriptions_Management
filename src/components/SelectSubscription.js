@@ -1,19 +1,20 @@
 import React from "react";
+import "../styles/View.css";
 import { Link, useLocation } from "react-router-dom";
 import "../styles/View.css";
 import { useState } from "react";
 import '../styles/Applications.css'
 import Header from "./Header";
 
-export const Applications = () => {
-    const location = useLocation();
-    const applicationsdata = location.state.applicationsdata.value
+export const SelectSubscription = (props) => {
+    const subscriptionsdata=props.sampleData.value
+
     const [selectedUsers, setSelectedUsers] = useState([]);
-    console.log(applicationsdata)
+    console.log(subscriptionsdata)
 
     const handleSelectAllUsers = () => {
-        if (selectedUsers.length < applicationsdata.length) {
-          setSelectedUsers(applicationsdata.map(({ id }) => id));
+        if (selectedUsers.length < subscriptionsdata.length) {
+          setSelectedUsers(subscriptionsdata.map(({ id }) => id));
         } else {
           setSelectedUsers([]);
         }
@@ -32,52 +33,53 @@ export const Applications = () => {
         );
         }   
     };
+    
     console.log("selected",selectedUsers)
+    localStorage.setItem("selectedusers",JSON.stringify(selectedUsers))
 
 
         return (
             <>
-            <Header />
-            <div className="apptable">
+            {/* <Header /> */}
             {/* <h1 className="subslisthead"> Subscriptions List </h1> */}
-            {/* <div id="profile-div" className="listingsubscriptions"> */}
+            <div id="profile-div" className="listingsubscriptions">
                
-                <table className='applicationtable'>
+                <table className='viewtable'>
                     <thead>
                         <tr>
-                            <th>
+                        <th>
                                 <input type="checkbox"
-                                checked={selectedUsers.length === applicationsdata.length}
+                                checked={selectedUsers.length === subscriptionsdata.length}
                                 onChange={handleSelectAllUsers}  /> 
                             </th>
-                            <th>Application ID</th>
-                            <th>Application Name</th>
-                            <th> Object Id</th>
+                            <th>Subscription ID</th>
+                            <th>Subscription Name</th>
+                            <th> Tenant Id</th>
                         </tr>
                     </thead>
                     <tbody>
-                {applicationsdata.map((applications) => (
-                  <tr key={applications.id}>
-                    <td> <input type="checkbox" value={applications.id} checked={selectedUsers.includes(applications.id)}
+                {subscriptionsdata.map((subscription) => (
+                  <tr key={subscription.id}>
+                    <td> <input type="checkbox" value= {subscription.id} checked={selectedUsers.includes(subscription.id)}
                     onChange={handleSelectUser}
-                    /> 
+                    />
                     </td>
-                   <td>  {applications.appId} <br /> </td>
-                   <td> {applications.displayName} </td>
-                   <td> {applications.id} </td>
+                   <td>  {subscription.id} <br /> </td>
+                   <td> {subscription.displayName} </td>
+                   <td> {subscription.tenantId} </td>
                   </tr>
                 ))}
     
-            </tbody>
-            <Link to="/roleCreation" state={selectedUsers} className="rolelink"> 
+    </tbody>
+
+    <Link to="/selectApplication" className="rolelink"> 
                         <button type="submit" className="rolessubmit">Next</button>
                  </Link>
-        </table>
-               
-   {/* </div> */}
-
-   
+                </table>
+    
             </div>
             </>
         );
     }
+
+    export default SelectSubscription

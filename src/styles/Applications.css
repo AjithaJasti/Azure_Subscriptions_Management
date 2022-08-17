@@ -1,0 +1,53 @@
+.apptable{
+    margin: 0%;
+}
+
+.applicationtable{
+    position: absolute;
+    margin: 6% 5%;
+    padding: 10% 1%;
+  }
+  
+  table,
+  th,
+  td {
+    
+  border: 1px solid grey;
+  border-collapse: collapse;
+  }
+  
+  th,
+  td {
+  padding: 10px 80px;
+  }
+  
+  th {
+  color: white;
+  background-color: black;
+  }
+  
+  tr:nth-child(odd) {
+  background-color: #eeeeee;
+  }
+  
+  tr:hover {
+  background-color: #dddddd;
+  }
+
+.rolelink > .rolessubmit{
+    position: absolute;
+    margin: 2% 10%;
+    margin-bottom: 10%;
+    padding: 1% 2%;
+    left: 35%;
+    background: #445ba8;
+    border-radius: 10px;
+    color: rgb(243, 243, 243);
+    border-color: rgb(255, 255, 255);
+    font-size: 19px;
+  
+  }
+  
+  .rolelink > .rolessubmit:hover{
+    background: #444d75;
+  }
