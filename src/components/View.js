@@ -1,11 +1,13 @@
 import React from "react";
 import "../styles/View.css";
-
+let id = 0
 export default function View(props) {
     console.log(props.sampleData)
         return (
             <>
-            {/* <h1 className="subslisthead"> Subscriptions List </h1> */}
+             <div className="subslisthead">
+            <h1>  Subscriptions Available in your Tenant </h1>
+            </div>
             <div id="profile-div" className="listingsubscriptions">
                
                 <table className='viewtable'>

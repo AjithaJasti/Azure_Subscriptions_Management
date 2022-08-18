@@ -53,7 +53,7 @@ export const Creation = (props) => {
         })
         .catch(error => console.log(error));
         console.log("ObjId", objId.value[0].id);
-        
+
   }
   
 //Creating subscriptions, Tags, Roles
@@ -77,8 +77,8 @@ export const Creation = (props) => {
         })
     };
 
-      await fetch('https://management.azure.com/providers/Microsoft.Subscription/aliases/tester_subscription?api-version=2020-09-01',dataoptions)
-      // await fetch('https://management.azure.com/providers/Microsoft.Subscription/aliases/'+values.name+'?api-version=2020-09-01',dataoptions)
+      // await fetch('https://management.azure.com/providers/Microsoft.Subscription/aliases/tester_subscription?api-version=2020-09-01',dataoptions)
+      await fetch('https://management.azure.com/providers/Microsoft.Subscription/aliases/'+values.name+'?api-version=2020-09-01',dataoptions)
       .then(response => response.json())
       .then(data => {
           subsdata = data.properties.subscriptionId;
@@ -100,8 +100,8 @@ export const Creation = (props) => {
 
     while(checkingsubscription.status != 200){
       console.log("checking before", checkingsubscription.status)
-      await fetch('https://management.azure.com/providers/Microsoft.Subscription/aliases/tester_subscription?api-version=2020-09-01',checkoptions)
-      // await fetch('https://management.azure.com/providers/Microsoft.Subscription/aliases/'+values.name+'?api-version=2020-09-01',dataoptions)
+      // await fetch('https://management.azure.com/providers/Microsoft.Subscription/aliases/tester_subscription?api-version=2020-09-01',checkoptions)
+      await fetch('https://management.azure.com/providers/Microsoft.Subscription/aliases/'+values.name+'?api-version=2020-09-01',checkoptions)
       .then(response => {
         checkingsubscription = response;
       })

@@ -1,9 +1,9 @@
 export async function listSubscription(accessToken) {
     const headers = new Headers();
     const bearer = `Bearer ${accessToken}`;
-    console.log(accessToken)
+    // console.log(accessToken)
     headers.append("Authorization", bearer);
-    localStorage.setItem("BearerMicrosoftToken",accessToken)
+    // localStorage.setItem("BearerMicrosoftToken",accessToken)
 
     const options = {
         method: "GET",
@@ -19,9 +19,9 @@ export async function listSubscription(accessToken) {
 export async function createSubscription(accessToken) {
     const headers = new Headers();
     const bearer = `Bearer ${accessToken}`;
-    console.log(accessToken)
+    // console.log(accessToken)
     headers.append("Authorization", bearer);
-    localStorage.setItem("BearerMicrosoftToken",accessToken)
+    // localStorage.setItem("BearerMicrosoftToken",accessToken)
 
     const options = {
         method: "GET",
@@ -38,7 +38,7 @@ export async function createSubscription(accessToken) {
 export async function getApplications() {
     const headers = new Headers();
     const bearer = `Bearer ${localStorage.getItem("BearerToken")}`;
-    console.log(localStorage.getItem("BearerToken"))
+    // console.log(localStorage.getItem("BearerToken"))
     headers.append("Authorization", bearer);
     headers.append("ConsistencyLevel","eventual")
 

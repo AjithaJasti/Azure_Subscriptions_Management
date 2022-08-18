@@ -1,6 +1,24 @@
+.subslisthead {
+  margin: 2% 30% 0% 30%;
+  padding: 0%;
+  background: #ccd5dc;
+  border-radius: 15px;
+}
+
+.subslisthead > h1{
+  position: relative;
+  left: 25%;
+  font-family: "Varela";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 47px;
+  color: #0a0909;
+}
+
 .viewtable{
     position: absolute;
-    margin: 8% 5%;
+    margin: 3% 5%;
     padding: 10% 1%;
   }
   

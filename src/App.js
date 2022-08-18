@@ -22,63 +22,58 @@ export const MainContent = () => {
     const [applications, setApplications] = useState(false);
     const navigate = useNavigate()
     
+
+    const managementtoken = () => {
+        instance.acquireTokenSilent({
+            ...loginRequest,
+            account: accounts[0]
+        }).then((response) => {
+            localStorage.setItem("BearerMicrosoftToken",response.accessToken);
+            console.log("ManagementToken", localStorage.getItem("BearerMicrosoftToken"));
+        })
+    }
+
+    const graphtoken = () => {
+        instance.acquireTokenSilent({
+            ...readRequest,
+            account: accounts[0]
+          }).then((response) => {
+            localStorage.setItem("BearerToken",response.accessToken);
+            console.log("GraphToken",localStorage.getItem("BearerToken"));
+          })
+    }
+    
     const getToken = (type) => {
 
+
         if (type === "create") {
-                instance.acquireTokenSilent({
-                    ...loginRequest,
-                    account: accounts[0]
-                }).then((response) => {
-                    localStorage.setItem("BearerMicrosoftToken",response.accessToken);
-                    createSubscription(response.accessToken).then(data => setCreateData(data));
-                    console.log(createData)
-                });
+                managementtoken();
+                graphtoken();
+                createSubscription(localStorage.getItem("BearerMicrosoftToken")).then(data => setCreateData(data));
+                console.log(createData) 
+                // getApplications(response.accessToken).then(response => setApplicationsData(response));
 
-                instance.acquireTokenSilent({
-                    ...readRequest,
-                    account: accounts[0]
-                  }).then((response) => {
-                    localStorage.setItem("BearerToken",response.accessToken);
-                    // getApplications(response.accessToken).then(response => setApplicationsData(response));
-                    console.log(localStorage.getItem("BearerToken"))
-                });
-
-                
-                setCreate(true);
-                setView(false);
-                setApplications(false);
+            setCreate(true);
+            setView(false);
+            setApplications(false);
           
          } else if(type === "view") {
-            instance.acquireTokenSilent({
-                ...loginRequest,
-                account: accounts[0]
-            }).then((response) => {
-                listSubscription(response.accessToken).then(response => setSampleData(response));
+                managementtoken();
+                listSubscription(localStorage.getItem("BearerMicrosoftToken")).then(response => setSampleData(response));
                 console.log(sampleData)
-            });
+
           setCreate(false);
           setView(true);
           setApplications(false);
           
-        }
-        else if(type==="applications"){
+        } else if(type === "roles"){
 
-            instance.acquireTokenSilent({
-                ...loginRequest,
-                account: accounts[0]
-            }).then((response) => {
-                listSubscription(response.accessToken).then(response => setApplicationsData(response));
+                managementtoken();
+                graphtoken();
+                listSubscription(localStorage.getItem("BearerMicrosoftToken")).then(response => setApplicationsData(response));
                 console.log(applicationsData)
-            });
-
-            instance.acquireTokenSilent({
-                ...readRequest,
-                account: accounts[0]
-              }).then((response) => {
-                localStorage.setItem("BearerToken",response.accessToken);
                 // getApplications(response.accessToken).then(response => setApplicationsData(response));
-                console.log(localStorage.getItem("BearerToken"))
-            });
+
             setCreate(false);
             setView(false);
             setApplications(true);
@@ -91,7 +86,7 @@ export const MainContent = () => {
                 <div className="subscriptionbuttons">
                 <button className= "createsubscription" onClick={() => getToken("create")}>Create</button>
                 <button className= "viewsubscription" onClick={() => getToken("view")}>View</button>
-                <button className= "applicationssubscription" onClick={() => getToken("applications")}>Roles</button>
+                <button className= "applicationssubscription" onClick={() => getToken("roles")}>Roles</button>
                 </div>
 
                 {createData && create &&  <Creation sampleData={createData} />}

@@ -37,7 +37,7 @@
 
 .createsubscription, .viewsubscription, .applicationssubscription{
   position: absolute;
-  margin-left: 4%;
+  margin-left: 8%;
   top: 9.8%;
   background-color: #4a6379;
   color: white;

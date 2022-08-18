@@ -41,7 +41,10 @@ export const SelectSubscription = (props) => {
         return (
             <>
             {/* <Header /> */}
-            {/* <h1 className="subslisthead"> Subscriptions List </h1> */}
+            <div className="subslisthead">
+                <h1> Select a Subscription to create a role </h1>
+            </div>
+
             <div id="profile-div" className="listingsubscriptions">
                
                 <table className='viewtable'>
