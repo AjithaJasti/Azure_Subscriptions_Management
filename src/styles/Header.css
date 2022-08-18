@@ -8,14 +8,14 @@
   
   .Header > h1 {
     position: absolute;
-    left: 78%;
+    left: 75%;
     right: 2%;
-    top: 12px;
+    top: 15px;
   
     font-family: "Trirong";
     font-style: normal;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 22px;
     line-height: 62px;
     letter-spacing: 0.06em;
   

@@ -10,7 +10,7 @@ function Header() {
           alt="Rubrik"
         />
       </a>
-      <h1> Azure Subscriptions </h1>
+      <h1> Azure Subscriptions Management</h1>
     </div>
   );
 }

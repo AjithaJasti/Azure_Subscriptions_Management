@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import { Applications } from "./Applications";
 import Header from "./Header";
 import { useLocation } from "react-router-dom";
+import { SignOutButton } from "./SignOutButton";
 
 
 export const SelectApplication = () => {
@@ -58,7 +59,7 @@ export const SelectApplication = () => {
         return (
             <>
             <Header />
-            
+            <SignOutButton />
             {
                 applicationsdata ?
                     navigate('/Applications', {state : {applicationsdata} })

@@ -4,6 +4,7 @@ import "../styles/View.css";
 import { useState } from "react";
 import '../styles/Applications.css'
 import Header from "./Header";
+import { SignOutButton } from "./SignOutButton";
 
 export const Applications = () => {
     const location = useLocation();
@@ -38,6 +39,7 @@ export const Applications = () => {
         return (
             <>
             <Header />
+            <SignOutButton />
             <div className="apptable">
             {/* <h1 className="subslisthead"> Subscriptions List </h1> */}
             {/* <div id="profile-div" className="listingsubscriptions"> */}
