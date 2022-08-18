@@ -55,6 +55,7 @@ export const Registration = (props) => {
     .catch((err) => {
       console.log(err);
     })
+    
 
   };
 

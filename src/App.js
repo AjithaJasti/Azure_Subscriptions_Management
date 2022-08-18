@@ -10,6 +10,7 @@ import {Applications} from './components/Applications'
 import {SelectApplication} from './components/SelectApplication'
 import { SelectSubscription } from "./components/SelectSubscription";
 import {useNavigate} from 'react-router-dom';
+import {Creation} from "./components/SubscriptionCreation"
 
 export const MainContent = () => {  
     const { instance, accounts } = useMsal();
@@ -32,6 +33,17 @@ export const MainContent = () => {
                     createSubscription(response.accessToken).then(data => setCreateData(data));
                     console.log(createData)
                 });
+
+                instance.acquireTokenSilent({
+                    ...readRequest,
+                    account: accounts[0]
+                  }).then((response) => {
+                    localStorage.setItem("BearerToken",response.accessToken);
+                    // getApplications(response.accessToken).then(response => setApplicationsData(response));
+                    console.log(localStorage.getItem("BearerToken"))
+                });
+
+                
                 setCreate(true);
                 setView(false);
                 setApplications(false);
@@ -82,7 +94,7 @@ export const MainContent = () => {
                 <button className= "applicationssubscription" onClick={() => getToken("applications")}>Roles</button>
                 </div>
 
-                {createData && create &&  <Registration sampleData={createData} />}
+                {createData && create &&  <Creation sampleData={createData} />}
                 {sampleData && view && <View sampleData={sampleData}/>} 
                 {applicationsData && applications && <SelectSubscription sampleData= {applicationsData}/>}
                 {/* {applications && <SelectApplication/>} */}
