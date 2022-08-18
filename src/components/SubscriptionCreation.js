@@ -223,7 +223,7 @@ const options={
           <label>GL Account:</label>
           <input required value={values.glaccount} onChange={set("glaccount")} />
 
-          <button required type="submit" className="buttoncreatesubmit">Next</button>
+          <button required type="submit" className="buttoncreatesubmit">Create</button>
 
         </form>
       </div>
