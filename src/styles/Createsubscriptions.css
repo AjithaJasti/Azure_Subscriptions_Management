@@ -1,4 +1,4 @@
- .title {
+.title {
   margin: 3% 30% 1% 30%;
   padding: 0%;
   background: #ccd5dc;
@@ -14,23 +14,22 @@
   font-size: 23px;
   line-height: 47px;
   color: #0a0909;
-} 
+}
 
-.divcreateform{
+.divcreateform {
   margin: 1% 20% 0% 15%;
   padding: 1% 20%;
   color: black;
   margin-left: 15%;
   margin-right: 15%;
 }
-.createforms > label{
-  display: inline-block; 
-  margin-top: 10px; 
+.createforms > label {
+  display: inline-block;
+  margin-top: 8px;
   width: 70%;
   font-size: 20px;
-
 }
-.buttoncreatesubmit{
+.buttoncreatesubmit {
   position: relative;
   margin-top: 10%;
   padding: 1% 8%;
@@ -40,10 +39,9 @@
   color: rgb(243, 243, 243);
   border-color: rgb(255, 255, 255);
   font-size: 19px;
-
 }
 
-.buttoncreatesubmit:hover{
+.buttoncreatesubmit:hover {
   background: #444d75;
 }
 
@@ -62,4 +60,9 @@
 
 .createforms > textarea {
   min-height: 100px;
+}
+
+.formerror {
+  margin: 0%;
+  color: rgb(221, 1, 1);
 }

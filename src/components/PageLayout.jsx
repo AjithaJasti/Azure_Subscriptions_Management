@@ -5,13 +5,13 @@ import { SignOutButton } from "./SignOutButton";
 import Header from "./Header";
 
 export const PageLayout = (props) => {
-    const isAuthenticated = useIsAuthenticated();
+  const isAuthenticated = useIsAuthenticated();
 
-    return (
-        <>
-                <Header />
-                { isAuthenticated ? <SignOutButton /> : <SignInButton /> }
-            {props.children}
-        </>
-    );
+  return (
+    <>
+      <Header />
+      {isAuthenticated ? <SignOutButton /> : <SignInButton />}
+      {props.children}
+    </>
+  );
 };
