@@ -1,32 +1,33 @@
 .Header {
-    margin: 0%;
-    top: 0%;
-    height: 90px;
-    background: #000000;
-    border-radius: 0px;
-  }
-  
-  .Header > h1 {
-    position: absolute;
-    left: 75%;
-    right: 2%;
-    top: 15px;
-  
-    font-family: "Trirong";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 62px;
-    letter-spacing: 0.06em;
-  
-    color: #ffffff;
-  }
-  
-  .Header > .image_link > img {
-    position: absolute;
-    left: 50px;
-    height: 89px;
-    width: 185px;
-    left: 85px;
-    top: 1px;
-  }
+  margin: 0%;
+  top: 0%;
+  height: 90px;
+  background: #000000;
+  border-radius: 0px;
+}
+
+.Header > h1 {
+  /* position: absolute;
+  left: 75%; */
+  margin-right: 4%;
+  padding-top: 1%;
+  text-align: right;
+  /* right: 2%; */
+  font-family: "Trirong";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 62px;
+  letter-spacing: 0.06em;
+
+  color: #ffffff;
+}
+
+.Header > .image_link > img {
+  position: absolute;
+  left: 50px;
+  height: 89px;
+  width: 185px;
+  left: 85px;
+  top: 1px;
+}

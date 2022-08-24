@@ -1,4 +1,4 @@
-.signinbutton{
+.signinbutton {
   position: fixed;
   left: 46%;
   top: 60%;
@@ -9,11 +9,11 @@
   font-size: 20px;
   cursor: pointer;
 }
-.signinbutton:hover{
+.signinbutton:hover {
   background-color: rgb(171, 171, 171);
 }
 
-.signoutbutton{
+.signoutbutton {
   position: absolute;
   margin-left: 88%;
   margin-top: 4%;
@@ -25,41 +25,49 @@
   font-size: 20px;
   cursor: pointer;
 }
-.signoutbutton:hover{
+.signoutbutton:hover {
   background-color: rgb(77, 77, 77);
   color: white;
 }
 
-.subscriptionbuttons{
+.subscriptionbuttons {
+  padding-left: 28%;
   background-color: #4a6379;
-  padding: 1.5%;
 }
 
-.createsubscription, .viewsubscription, .applicationssubscription{
-  position: absolute;
-  margin-left: 8%;
-  top: 9.8%;
+.createsubscription,
+.viewsubscription,
+.applicationssubscription {
+  /* position: absolute; */
+  margin: 0% 5%;
+  text-align: center;
+  /* top: 9.8%; */
   background-color: #4a6379;
   color: white;
   border: none;
-  padding: 9px 30px;
+  padding: 1% 3%;
   border-color: black;
   font-size: 20px;
   cursor: pointer;
 }
-.createsubscription:hover, .viewsubscription:hover, .applicationssubscription:hover{
+.createsubscription:hover,
+.viewsubscription:hover,
+.applicationssubscription:hover {
   background-color: #1a2f46;
-
 }
 
-.createsubscription{
-  left: 28%;
+.TenantName {
+  /* margin-top: 4%; */
+  display: inline-block;
+  margin: 0%;
+  text-align: right;
+  margin-left: 19%;
+  margin-right: 4%;
+  /* border-radius: 5px; */
+  border: 1px solid;
+  border-color: rgb(149, 148, 148);
+  /* background-color: rgb(203, 203, 203); */
+  padding: 0.5% 1%;
+  color: rgb(255, 246, 246);
+  font-size: 18px;
 }
-
-.viewsubscription{
-  left: 38%;
-}
-.applicationssubscription{
-  left: 48%;
-}
-

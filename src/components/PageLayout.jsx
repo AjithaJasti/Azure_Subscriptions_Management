@@ -10,6 +10,7 @@ export const PageLayout = (props) => {
   return (
     <>
       <Header />
+
       {isAuthenticated ? <SignOutButton /> : <SignInButton />}
       {props.children}
     </>
