@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useMsal } from "@azure/msal-react";
-import { callMsGraph } from "../graph";
+import { callMsGraph, userMsGraph } from "../graph";
 import { readRequest } from "./authConfig";
 
 export const TenantName = () => {
   const { instance, accounts } = useMsal();
   const [graphData, setGraphData] = useState(null);
+  const [userData, setUserData] = useState(null);
 
   //   console.log(graphData);
   useEffect(() => {
@@ -21,6 +22,9 @@ export const TenantName = () => {
           callMsGraph(response.accessToken).then((response) =>
             setGraphData(response)
           );
+          userMsGraph(response.accessToken).then((response) =>
+            setUserData(response)
+          );
         });
     }
     RequestProfileData();
@@ -31,10 +35,16 @@ export const TenantName = () => {
       {/* <p> techops</p> */}
 
       {/* {RequestProfileData()} */}
-      {graphData ? (
-        <h1 className="TenantName"> {graphData.value[0].displayName} Tenant</h1>
+      {userData && graphData ? (
+        <div className="TenantUserName">
+          <h1 className="TenantName">
+            {" "}
+            {graphData.value[0].displayName} Tenant
+          </h1>
+          <h1 className="UserName"> {userData.userPrincipalName}</h1>
+        </div>
       ) : (
-        <h1 className="TenantName"> Unavailable</h1>
+        <h1 className="Unavailable"> Unavailable</h1>
       )}
     </>
   );

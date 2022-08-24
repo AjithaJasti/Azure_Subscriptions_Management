@@ -76,3 +76,20 @@ export async function callMsGraph(accessToken) {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 }
+
+export async function userMsGraph(accessToken) {
+  const headers = new Headers();
+  const bearer = `Bearer ${accessToken}`;
+  console.log(accessToken);
+
+  headers.append("Authorization", bearer);
+
+  const options = {
+    method: "GET",
+    headers: headers,
+  };
+
+  return fetch("https://graph.microsoft.com/v1.0/me", options)
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
+}

@@ -31,17 +31,18 @@
 }
 
 .subscriptionbuttons {
-  padding-left: 28%;
+  padding-left: 26%;
   background-color: #4a6379;
+  padding-right: 2%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .createsubscription,
 .viewsubscription,
 .applicationssubscription {
-  /* position: absolute; */
-  margin: 0% 5%;
+  margin: 0% 10% 0% 0%;
   text-align: center;
-  /* top: 9.8%; */
   background-color: #4a6379;
   color: white;
   border: none;
@@ -55,18 +56,35 @@
 .applicationssubscription:hover {
   background-color: #1a2f46;
 }
+.TenantUserName {
+  margin: 5px;
+  padding: 1px;
+  border: 1px solid;
+  border-color: rgb(135, 133, 133);
+}
 
 .TenantName {
-  /* margin-top: 4%; */
+  margin: 5px 5px 0px;
+  text-align: right;
+  color: rgb(255, 246, 246);
+  font-size: 13px;
+}
+
+.UserName {
+  margin: 5px;
+  text-align: right;
+  color: rgb(255, 246, 246);
+  font-size: 13px;
+}
+
+.Unavailable {
   display: inline-block;
   margin: 0%;
   text-align: right;
   margin-left: 19%;
   margin-right: 4%;
-  /* border-radius: 5px; */
   border: 1px solid;
   border-color: rgb(149, 148, 148);
-  /* background-color: rgb(203, 203, 203); */
   padding: 0.5% 1%;
   color: rgb(255, 246, 246);
   font-size: 18px;
