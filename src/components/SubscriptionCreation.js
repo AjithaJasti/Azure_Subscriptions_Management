@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Createsubscriptions.css";
 import { v4 as uuid } from "uuid";
-import { usePromiseTracker } from "react-promise-tracker";
 import { LoadingSpinner } from "./LoadingSpinner";
 
 const dept = ["IT", "Engineering", "Sales", "Support", "Infosec"];

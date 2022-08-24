@@ -25,7 +25,8 @@ export const TenantName = () => {
           userMsGraph(response.accessToken).then((response) =>
             setUserData(response)
           );
-        });
+        })
+        .catch((error) => alert("Insufficient previlages"));
     }
     RequestProfileData();
   }, []);

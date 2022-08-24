@@ -53,7 +53,8 @@ export const MainContent = () => {
       .then((response) => {
         localStorage.setItem("BearerToken", response.accessToken);
         console.log("GraphToken", localStorage.getItem("BearerToken"));
-      });
+      })
+      .catch((error) => alert("Insufficient previlages"));
   };
 
   const getToken = (type) => {
