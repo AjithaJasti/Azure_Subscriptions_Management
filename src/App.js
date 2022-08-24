@@ -54,7 +54,7 @@ export const MainContent = () => {
         localStorage.setItem("BearerToken", response.accessToken);
         console.log("GraphToken", localStorage.getItem("BearerToken"));
       })
-      .catch((error) => alert("Insufficient previlages"));
+      .catch((error) => alert("Insufficient permissions"));
   };
 
   const getToken = (type) => {
@@ -69,7 +69,7 @@ export const MainContent = () => {
           createSubscription(response.accessToken).then((data) =>
             setCreateData(data)
           );
-          console.log(createData);
+          // alert("");
         });
 
       graphtoken();

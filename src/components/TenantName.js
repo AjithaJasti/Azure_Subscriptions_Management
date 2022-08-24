@@ -26,7 +26,7 @@ export const TenantName = () => {
             setUserData(response)
           );
         })
-        .catch((error) => alert("Insufficient previlages"));
+        .catch((error) => alert("Insufficient API permissions "));
     }
     RequestProfileData();
   }, []);

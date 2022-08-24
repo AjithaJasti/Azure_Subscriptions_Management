@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Createsubscriptions.css";
 import { v4 as uuid } from "uuid";
 import { LoadingSpinner } from "./LoadingSpinner";
+import { WindowUtils } from "msal";
 
 const dept = ["IT", "Engineering", "Sales", "Support", "Infosec"];
 const environment = ["Dev", "Non-Cogs", "Cogs"];
@@ -18,10 +19,10 @@ let objId = {};
 let checkingsubscription = {};
 
 export const Creation = (props) => {
-  console.log(
-    "enrollment acc",
-    props.sampleData.value[0].properties.enrollmentAccounts[0].id
-  );
+  // console.log(
+  //   "enrollment acc",
+  //   props.sampleData.value[0].properties.enrollmentAccounts[0].id
+  // );
   const [values, setValues] = useState({
     name: "",
     dept: "",
@@ -94,7 +95,7 @@ export const Creation = (props) => {
         objId = data;
       })
       .catch((error) => console.log(error));
-    console.log("ObjId", objId.value[0].id);
+    // console.log("ObjId", objId.value[0].id);
   };
 
   //Creating subscriptions, Tags, Roles
@@ -133,7 +134,7 @@ export const Creation = (props) => {
         subsdata = data.properties.subscriptionId;
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
     console.log("subsdataaaa", subsdata);
 
@@ -241,7 +242,14 @@ export const Creation = (props) => {
       console.log(values);
       try {
         applicationData();
-        saveFormData();
+        console.log("sample data", props.sampleData.value);
+        if (props.sampleData.value.length != 0) {
+          saveFormData();
+          alert("Working");
+        } else {
+          setLoading(false);
+          alert("Creation Unsuccessful. Need creation access");
+        }
         setValues({
           name: "",
           environment: "",
