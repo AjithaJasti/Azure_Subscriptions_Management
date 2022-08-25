@@ -69,7 +69,6 @@ export const MainContent = () => {
           createSubscription(response.accessToken).then((data) =>
             setCreateData(data)
           );
-          // alert("");
         });
 
       graphtoken();
@@ -89,8 +88,9 @@ export const MainContent = () => {
           listSubscription(response.accessToken).then((response) =>
             setSampleData(response)
           );
-          console.log(sampleData);
-        });
+          // console.log(sampleData);
+        })
+        .catch((error) => alert("Insufficient permissions"));
 
       setCreate(false);
       setView(true);
@@ -106,7 +106,8 @@ export const MainContent = () => {
             setApplicationsData(response)
           );
           console.log(applicationsData);
-        });
+        })
+        .catch((error) => alert("Insufficient permissions"));
 
       graphtoken();
       // getApplications(response.accessToken).then(response => setApplicationsData(response));

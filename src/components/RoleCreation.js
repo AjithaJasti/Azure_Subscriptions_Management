@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import Header from "./Header";
 import { v4 as uuid } from "uuid";
+import { SignOutButton } from "./SignOutButton";
 
 const allowedtypes = ["User", "Application", '"User" , "Application'];
 export const RoleCreation = () => {
@@ -50,12 +51,16 @@ export const RoleCreation = () => {
         "?api-version=2015-07-01",
       dataoptions
     )
-      .then((data) => {
-        console.log(data);
+      .then((response) => {
+        if (response.ok) {
+          return alert("Role Assigned Successfully");
+        }
+        throw new Error("Role already created or Role Id is incorrect");
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      // .then((data) => {
+      //   console.log("data", data);
+      // })
+      .catch((error) => alert(error));
   };
 
   const onSubmit = (event) => {
@@ -67,14 +72,13 @@ export const RoleCreation = () => {
         });
       });
 
-      alert("Roles created Successfully!");
       setValues({
         roleName: "",
         allowedtypes: "",
         guid: "",
       });
     } catch (e) {
-      alert(`Registration failed! ${e.message}`);
+      alert(`Role creation failed! ${e.message}`);
     }
     //   console.log(values)
   };
@@ -83,15 +87,30 @@ export const RoleCreation = () => {
     <>
       {/* <Navbar bg="primary" variant="dark"> */}
       <Header />
+      <SignOutButton />
       {/* </Navbar> */}
-      <div className="tagtitle">
-        <h1>Enter details to create roles </h1>
-      </div>
-
+      <h1 className="title">Step 3 of 3 - Enter Role ID to create the role </h1>
+      <p className="Azureroles">
+        {" "}
+        Click{" "}
+        <a
+          href="https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles"
+          target="_blank"
+        >
+          {" "}
+          Azure Builtin roles{" "}
+        </a>{" "}
+        to get the role id
+      </p>
       <div className="tagform">
         <form onSubmit={onSubmit} className="forms">
-          <label>Role Name</label>
-          <input required value={values.roleName} onChange={set("roleName")} />
+          <label>Role Id</label>
+          <input
+            placeholder="Reader roleId Ex: acdd72a7-3385-48ef-bd42-f606fba81ae7"
+            required
+            value={values.roleName}
+            onChange={set("roleName")}
+          />
 
           {/* <label> Allowed Member Types </label>
             <select required value={values.allowedtypes} onChange={set("allowedtypes")}>

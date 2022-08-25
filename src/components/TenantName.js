@@ -26,7 +26,11 @@ export const TenantName = () => {
             setUserData(response)
           );
         })
-        .catch((error) => alert("Insufficient API permissions "));
+        .catch((error) =>
+          alert(
+            "Insufficient App registration permissions to display Tenant Name and User name "
+          )
+        );
     }
     RequestProfileData();
   }, []);

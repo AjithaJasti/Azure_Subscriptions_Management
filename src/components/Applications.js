@@ -6,9 +6,10 @@ import "../styles/Applications.css";
 import Header from "./Header";
 import { SignOutButton } from "./SignOutButton";
 
-export const Applications = () => {
+export const Applications = (props) => {
+  console.log("Applications data", props.applicationsdata.value);
   const location = useLocation();
-  const applicationsdata = location.state.applicationsdata.value;
+  const applicationsdata = props.applicationsdata.value;
   const [selectedUsers, setSelectedUsers] = useState([]);
   console.log(applicationsdata);
 
@@ -37,8 +38,6 @@ export const Applications = () => {
 
   return (
     <>
-      <Header />
-      <SignOutButton />
       <div className="apptable">
         {/* <h1 className="subslisthead"> Subscriptions List </h1> */}
         {/* <div id="profile-div" className="listingsubscriptions"> */}

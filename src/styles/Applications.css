@@ -1,53 +1,63 @@
-.apptable{
-    margin: 0%;
+.apptable {
+  margin: 2% 10%;
 }
 
-.applicationtable{
-    position: absolute;
-    margin: 6% 5%;
-    padding: 10% 1%;
-  }
-  
-  table,
-  th,
-  td {
-    
+.applicationtable {
+  /* position: absolute; */
+  margin: 2% 1%;
+  padding: 5% 1%;
+}
+
+table,
+th,
+td {
   border: 1px solid grey;
   border-collapse: collapse;
-  }
-  
-  th,
-  td {
+}
+
+th,
+td {
   padding: 10px 80px;
-  }
-  
-  th {
+}
+
+th {
   color: white;
   background-color: black;
-  }
-  
-  tr:nth-child(odd) {
-  background-color: #eeeeee;
-  }
-  
-  tr:hover {
-  background-color: #dddddd;
-  }
+}
 
-.rolelink > .rolessubmit{
-    position: absolute;
-    margin: 2% 10%;
-    margin-bottom: 10%;
-    padding: 1% 2%;
-    left: 35%;
-    background: #445ba8;
-    border-radius: 10px;
-    color: rgb(243, 243, 243);
-    border-color: rgb(255, 255, 255);
-    font-size: 19px;
-  
-  }
-  
-  .rolelink > .rolessubmit:hover{
-    background: #444d75;
-  }
+tr:nth-child(odd) {
+  background-color: #eeeeee;
+}
+
+tr:hover {
+  background-color: #dddddd;
+}
+
+.rolelink > .rolessubmit {
+  position: absolute;
+  margin: 2% 10%;
+  margin-bottom: 10%;
+  padding: 1% 2%;
+  left: 35%;
+  background: #445ba8;
+  border-radius: 10px;
+  color: rgb(243, 243, 243);
+  border-color: rgb(255, 255, 255);
+  font-size: 19px;
+}
+
+.rolelink > .rolessubmit:hover {
+  background: #444d75;
+}
+
+.Azureroles {
+  margin: 2% 30% 0% 30%;
+  font-family: "Varela";
+  font-style: normal;
+  font-size: 23px;
+  line-height: 50px;
+  color: #0a0909;
+  text-align: center;
+  /* background-color: #ccd5dc; */
+  border-radius: 15px;
+}

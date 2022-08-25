@@ -46,9 +46,9 @@ export const SelectApplication = () => {
   const onSubmit = (event) => {
     event.preventDefault(); // Prevent default submission
     try {
-      setValues({
-        appname: "",
-      });
+      // setValues({
+      //   appname: "",
+      // });
       saveFormData().then((response) => setApplicationsdata(response));
     } catch (e) {
       alert(`Registration failed! ${e.message}`);
@@ -60,20 +60,21 @@ export const SelectApplication = () => {
     <>
       <Header />
       <SignOutButton />
-      {applicationsdata ? (
-        navigate("/Applications", { state: { applicationsdata } })
-      ) : (
-        <div className="appform">
-          <form onSubmit={onSubmit} className="appforms">
-            <input
-              placeholder="Search for Application"
-              value={values.appname}
-              onChange={set("appname")}
-            />
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      )}
+      <h1 className="title">
+        Step 2 of 3 - Search for Application to create role{" "}
+      </h1>{" "}
+      <div className="appform">
+        <form onSubmit={onSubmit} className="appforms">
+          <input
+            placeholder="Search for Application"
+            value={values.appname}
+            onChange={set("appname")}
+          />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+      {applicationsdata && <Applications applicationsdata={applicationsdata} />}
+      {/* )} */}
     </>
   );
 };

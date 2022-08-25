@@ -1,46 +1,40 @@
 .appform {
-    padding: 4% 22%;
-    color: black;
-    margin-left: 16%;
-    margin-right: 15%;
-  }
-  
-  .appforms > label {
-    display: inline-block; 
-    margin-top: 10px; 
-    width: 70%;
-    font-size: 20px;
-  }
-  
-  .appforms >  button {
-    margin-top: 5%;
-    margin-left: 32%;
-    width: 100px;
-    height: 40px;
-    background: #445ba8;
-    border-radius: 10px;
-    color: rgb(243, 243, 243);
-    border-color: rgb(255, 255, 255);
-    font-size: 15px;
-  }
-  
-  .appforms >  button:hover{
-    background: #444d75;
-  }
-  
-  .appforms > input,
-  .appforms > select,
-  .appforms > textarea {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 400px;
-    max-width: 600px;
-    padding: 11px;
-    background: #e2e2e2;
-    border: 2px solid #aaaaaa;
-    border-radius: 10px;
-  }
-  
-  .appforms > textarea {
-    min-height: 100px;
-  }
+  margin: 1% 20% 0% 15%;
+  padding: 1% 20%;
+  color: black;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.appforms > button {
+  margin-top: 5%;
+  margin-left: 32%;
+  width: 100px;
+  height: 40px;
+  background: #445ba8;
+  border-radius: 10px;
+  color: rgb(243, 243, 243);
+  border-color: rgb(255, 255, 255);
+  font-size: 15px;
+}
+
+.appforms > button:hover {
+  background: #444d75;
+}
+
+.appforms > input,
+.appforms > select,
+.appforms > textarea {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 500px;
+  max-width: 600px;
+  padding: 11px;
+  background: #e2e2e2;
+  border: 2px solid #aaaaaa;
+  border-radius: 10px;
+}
+
+.appforms > textarea {
+  min-height: 100px;
+}

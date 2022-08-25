@@ -6,17 +6,19 @@ import { v4 as uuid } from "uuid";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { WindowUtils } from "msal";
 
-const dept = ["IT", "Engineering", "Sales", "Support", "Infosec"];
+const department = ["IT", "Engineering", "Sales", "Support", "Infosec"];
 const environment = ["Dev", "Non-Cogs", "Cogs"];
 const deptcostcenter = [
   { dept1: "IT", costcenter: 1 },
   { dept1: "Engineering", costcenter: 2 },
 ];
 
-let cost_center1 = "";
+// let cost_center1 = "";
+let flag = 0;
 let subsdata = {};
 let objId = {};
 let checkingsubscription = {};
+let aliasname = uuid();
 
 export const Creation = (props) => {
   // console.log(
@@ -25,11 +27,14 @@ export const Creation = (props) => {
   // );
   const [values, setValues] = useState({
     name: "",
-    dept: "",
+    team: "",
+    department: "",
     environment: "",
-    cost: "",
     cost_center: "",
     gl_account: "",
+    owner_email: "",
+    owner_name: "",
+    purpose: "",
   });
 
   const [formerrors, setFormErrors] = useState({});
@@ -43,16 +48,16 @@ export const Creation = (props) => {
   };
   useEffect(
     () => {
-      if (values.dept != null) {
-        if (values.dept === "IT") {
+      if (values.department != null) {
+        if (values.department === "IT") {
           values.cost_center = "7820";
-        } else if (values.dept === "Engineering") {
+        } else if (values.department === "Engineering") {
           values.cost_center = "4923";
-        } else if (values.dept === "Sales") {
+        } else if (values.department === "Sales") {
           values.cost_center = "8921";
-        } else if (values.dept === "Support") {
+        } else if (values.department === "Support") {
           values.cost_center = "2920";
-        } else if (values.dept === "InfoSec") {
+        } else if (values.department === "InfoSec") {
           values.cost_center = "7830";
         }
       }
@@ -66,7 +71,7 @@ export const Creation = (props) => {
         }
       }
     },
-    [values.dept],
+    [values.department],
     [values.environment]
   );
 
@@ -119,26 +124,27 @@ export const Creation = (props) => {
       }),
     };
 
+    // await fetch(
+    //   "https://management.azure.com/providers/Microsoft.Subscription/aliases/substest2208?api-version=2020-09-01",
+    //   dataoptions
+    // )
     await fetch(
-      "https://management.azure.com/providers/Microsoft.Subscription/aliases/substest2208?api-version=2020-09-01",
+      "https://management.azure.com/providers/Microsoft.Subscription/aliases/" +
+        aliasname +
+        "?api-version=2020-09-01",
       dataoptions
     )
-      // await fetch(
-      //   "https://management.azure.com/providers/Microsoft.Subscription/aliases/" +
-      //     values.name +
-      //     "?api-version=2020-09-01",
-      //   dataoptions
-      // )
       .then((response) => response.json())
       .then((data) => {
         subsdata = data.properties.subscriptionId;
+        alert(`Subscription created Successfully with ID \n ${subsdata}`);
       })
       .catch((err) => {
         alert(err);
       });
     console.log("subsdataaaa", subsdata);
 
-    await delay(10000);
+    await delay(7000);
 
     //Checking if subscription created
     const checkoptions = {
@@ -146,24 +152,26 @@ export const Creation = (props) => {
       headers: headers,
     };
 
-    while (checkingsubscription.status != 200) {
+    while (checkingsubscription.status != 200 && flag <= 5) {
       console.log("checking before", checkingsubscription.status);
+      // await fetch(
+      //   "https://management.azure.com/providers/Microsoft.Subscription/aliases/substest2208?api-version=2020-09-01",
+      //   checkoptions
+      // )
       await fetch(
-        "https://management.azure.com/providers/Microsoft.Subscription/aliases/substest2208?api-version=2020-09-01",
+        "https://management.azure.com/providers/Microsoft.Subscription/aliases/" +
+          aliasname +
+          "?api-version=2020-09-01",
         checkoptions
       )
-        // await fetch(
-        //   "https://management.azure.com/providers/Microsoft.Subscription/aliases/" +
-        //     values.name +
-        //     "?api-version=2020-09-01",
-        //   checkoptions
-        // )
         .then((response) => {
           checkingsubscription = response;
         })
         .catch((err) => {
           console.log(err);
         });
+      flag = flag + 1;
+      console.log("flag value", flag);
       console.log("checking subscription", checkingsubscription.status);
     }
 
@@ -175,11 +183,14 @@ export const Creation = (props) => {
       body: JSON.stringify({
         properties: {
           tags: {
-            department: values.dept,
+            Team: values.team,
+            department: values.department,
             environment: values.environment,
-            "Estimated Cost": values.cost,
             cost_center: values.cost_center,
             gl_account: values.gl_account,
+            owner_email: values.owner_email,
+            owner_name: values.owner_name,
+            purpose: values.purpose,
           },
         },
       }),
@@ -189,12 +200,16 @@ export const Creation = (props) => {
       `https://management.azure.com/subscriptions/${subsdata}/providers/Microsoft.Resources/tags/default?api-version=2021-04-01`,
       options
     )
-      .then((data) => {
-        console.log(data);
+      .then((response) => {
+        if (response.ok) {
+          return alert("Tags Assigned Successfully");
+        }
+        throw new Error("Tags not assigned");
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      // .then((data) => {
+      //   console.log("data", data);
+      // })
+      .catch((error) => alert(error));
 
     //Creating Roles
     const roleoptions = {
@@ -219,19 +234,23 @@ export const Creation = (props) => {
         "?api-version=2015-07-01",
       roleoptions
     )
-      .then((data) => {
-        console.log(data);
+      .then((response) => {
+        if (response.ok) {
+          return alert("Roles Assigned Successfully");
+        }
+        throw new Error("Role Already Exists");
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      // .then((data) => {
+      //   console.log("data", data);
+      // })
+      .catch((error) => alert(error));
+
     setLoading(false);
-    alert("Subscriptions created Successfully!");
   };
 
   const onSubmit = (event) => {
     event.preventDefault(); // Prevent default submission
-    setLoading(true);
+
     setFormErrors(validate(values));
     setIsSubmit(true);
   };
@@ -240,23 +259,27 @@ export const Creation = (props) => {
     console.log(formerrors);
     if (Object.keys(formerrors).length === 0 && isSubmit) {
       console.log(values);
+      setLoading(true);
       try {
         applicationData();
         console.log("sample data", props.sampleData.value);
         if (props.sampleData.value.length != 0) {
           saveFormData();
-          alert("Working");
+          // alert("Working");
         } else {
           setLoading(false);
           alert("Creation Unsuccessful. Need creation access");
         }
         setValues({
           name: "",
+          team: "",
           environment: "",
-          dept: "",
-          cost: "",
+          department: "",
           cost_center: "",
           gl_account: "",
+          ownermail: "",
+          owner_name: "",
+          purpose: "",
         });
         // alert("Subscription created Successfully!");
       } catch (e) {
@@ -267,11 +290,11 @@ export const Creation = (props) => {
 
   const validate = (formvalues) => {
     const errors = {};
-    const nameregex = /^[ A-Za-z0-9_-]*$/;
-    if (!nameregex.test(formvalues.name)) {
-      errors.name =
-        "Subscription name should contain only alphabets, numbers, - and _";
-    }
+    // const nameregex = /^[ A-Za-z0-9_-]*$/;
+    // if (!nameregex.test(formvalues.name)) {
+    //   errors.name =
+    //     "Subscription name should contain only alphabets, numbers, - and _";
+    // }
 
     return errors;
   };
@@ -282,23 +305,34 @@ export const Creation = (props) => {
         <LoadingSpinner />
       ) : (
         <>
-          <div className="title">
-            <h1>Enter details to create a subscription </h1>{" "}
-          </div>
+          <h1 className="title">Enter details to create a subscription </h1>{" "}
           <div className="divcreateform">
             <form onSubmit={onSubmit} className="createforms">
               <label>Subscription Name</label>
               <input
                 required
                 value={values.name}
-                placeholder="Enter the subscription name"
+                placeholder="Ex: Devops_Subscription"
                 onChange={set("name")}
               />
               <p className="formerror"> {formerrors.name}</p>
+
+              <label>Team</label>
+              <input
+                required
+                value={values.team}
+                placeholder="Ex: RCF"
+                onChange={set("team")}
+              />
+
               <label> Department </label>
-              <select required value={values.dept} onChange={set("dept")}>
+              <select
+                required
+                value={values.department}
+                onChange={set("department")}
+              >
                 <option value="">Select Department</option>
-                {dept.map((c) => (
+                {department.map((c) => (
                   <option key={c} value={c}>
                     {c}
                   </option>
@@ -319,27 +353,46 @@ export const Creation = (props) => {
                 ))}
               </select>
 
-              <label>Monthly Estimated Cost*:</label>
+              <label>Cost center:</label>
               <input
                 type="number"
                 required
                 min="1"
-                value={values.cost}
-                onChange={set("cost")}
-              />
-
-              <label>Cost center:</label>
-              <input
-                required
                 value={values.cost_center}
                 onChange={set("cost_center")}
               />
 
               <label>GL Account:</label>
               <input
+                type="number"
                 required
+                min="1"
                 value={values.gl_account}
                 onChange={set("gl_account")}
+              />
+
+              <label>Owner Email</label>
+              <input
+                required
+                value={values.owner_email}
+                placeholder="Ex: tom@rubrik.com"
+                onChange={set("owner_email")}
+              />
+
+              <label>Owner Name</label>
+              <input
+                required
+                value={values.owner_name}
+                placeholder="Ex: Tom Parker"
+                onChange={set("owner_name")}
+              />
+
+              <label>Purpose</label>
+              <input
+                required
+                value={values.purpose}
+                placeholder="Ex: Reason"
+                onChange={set("purpose")}
               />
 
               <button required type="submit" className="buttoncreatesubmit">

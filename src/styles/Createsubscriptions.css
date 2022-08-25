@@ -1,39 +1,34 @@
 .title {
-  margin: 3% 30% 1% 30%;
-  padding: 0%;
-  background: #ccd5dc;
-  border-radius: 15px;
-}
-
-.title > h1 {
-  position: relative;
-  left: 25%;
+  margin: 2% 30% 0% 30%;
   font-family: "Varela";
   font-style: normal;
   font-weight: 400;
   font-size: 23px;
-  line-height: 47px;
+  line-height: 50px;
   color: #0a0909;
+  text-align: center;
+  background-color: #ccd5dc;
+  border-radius: 15px;
 }
 
 .divcreateform {
-  margin: 1% 20% 0% 15%;
+  margin: 1% 5% 5% 13%;
   padding: 1% 20%;
   color: black;
-  margin-left: 15%;
-  margin-right: 15%;
+  /* margin-left: 15%;
+  margin-right: 15%; */
 }
 .createforms > label {
   display: inline-block;
-  margin-top: 8px;
-  width: 70%;
+  margin-top: 1%;
+  width: 33%;
   font-size: 20px;
 }
 .buttoncreatesubmit {
   position: relative;
-  margin-top: 5%;
+  margin-top: 3%;
   padding: 1% 8%;
-  left: 35%;
+  left: 23%;
   background: #445ba8;
   border-radius: 10px;
   color: rgb(243, 243, 243);
@@ -50,16 +45,17 @@
 .createforms > textarea {
   box-sizing: border-box;
   display: inline-block;
-  width: 500px;
+  margin-bottom: 2%;
+  width: 350px;
   max-width: 600px;
-  padding: 11px;
+  padding: 8px;
   background: #e2e2e2;
   border: 2px solid #aaaaaa;
   border-radius: 10px;
 }
 
 .createforms > textarea {
-  min-height: 100px;
+  min-height: 50px;
 }
 
 .formerror {

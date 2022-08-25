@@ -1,9 +1,8 @@
 import React from "react";
-import "../styles/View.css";
 import { Link, useLocation } from "react-router-dom";
-import "../styles/View.css";
+import "../styles/SelectSubscription.css";
 import { useState } from "react";
-import "../styles/Applications.css";
+// import "../styles/Applications.css";
 import Header from "./Header";
 
 export const SelectSubscription = (props) => {
@@ -40,12 +39,13 @@ export const SelectSubscription = (props) => {
   return (
     <>
       {/* <Header /> */}
-      <div className="subslisthead">
-        <h1> Select a Subscription to create a role </h1>
-      </div>
+      <h1 className="subslisthead">
+        {" "}
+        Step 1 of 3 - Select a Subscription to create a role{" "}
+      </h1>
 
       <div id="profile-div" className="listingsubscriptions">
-        <table className="viewtable">
+        <table className="roletable">
           <thead>
             <tr>
               <th>
@@ -55,9 +55,9 @@ export const SelectSubscription = (props) => {
                   onChange={handleSelectAllUsers}
                 />
               </th>
-              <th>Subscription ID</th>
+              {/* <th>Subscription ID</th> */}
               <th>Subscription Name</th>
-              <th> Tenant Id</th>
+              <th> State</th>
             </tr>
           </thead>
           <tbody>
@@ -72,12 +72,12 @@ export const SelectSubscription = (props) => {
                     onChange={handleSelectUser}
                   />
                 </td>
-                <td>
+                {/* <td>
                   {" "}
                   {subscription.id} <br />{" "}
-                </td>
+                </td> */}
                 <td> {subscription.displayName} </td>
-                <td> {subscription.tenantId} </td>
+                <td> {subscription.state} </td>
               </tr>
             ))}
           </tbody>
