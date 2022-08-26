@@ -4,16 +4,11 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Createsubscriptions.css";
 import { v4 as uuid } from "uuid";
 import { LoadingSpinner } from "./LoadingSpinner";
-import { WindowUtils } from "msal";
+import { costcenter, glaccount } from "./Config";
 
 const department = ["IT", "Engineering", "Sales", "Support", "Infosec"];
 const environment = ["Dev", "Non-Cogs", "Cogs"];
-const deptcostcenter = [
-  { dept1: "IT", costcenter: 1 },
-  { dept1: "Engineering", costcenter: 2 },
-];
 
-// let cost_center1 = "";
 let flag = 0;
 let subsdata = {};
 let objId = {};
@@ -46,34 +41,54 @@ export const Creation = (props) => {
       setValues((oldValues) => ({ ...oldValues, [names]: value }));
     };
   };
-  useEffect(
-    () => {
-      if (values.department != null) {
-        if (values.department === "IT") {
-          values.cost_center = "7820";
-        } else if (values.department === "Engineering") {
-          values.cost_center = "4923";
-        } else if (values.department === "Sales") {
-          values.cost_center = "8921";
-        } else if (values.department === "Support") {
-          values.cost_center = "2920";
-        } else if (values.department === "InfoSec") {
-          values.cost_center = "7830";
-        }
+  useEffect(() => {
+    if (values.department != null) {
+      if (values.department === "IT") {
+        setValues((oldValues) => ({
+          ...oldValues,
+          cost_center: costcenter.IT,
+        }));
+      } else if (values.department === "Engineering") {
+        setValues((oldValues) => ({
+          ...oldValues,
+          cost_center: costcenter.Engineering,
+        }));
+      } else if (values.department === "Sales") {
+        setValues((oldValues) => ({
+          ...oldValues,
+          cost_center: costcenter.Sales,
+        }));
+      } else if (values.department === "Support") {
+        setValues((oldValues) => ({
+          ...oldValues,
+          cost_center: costcenter.Support,
+        }));
+      } else if (values.department === "Infosec") {
+        setValues((oldValues) => ({
+          ...oldValues,
+          cost_center: costcenter.Infosec,
+        }));
       }
-      if (values.environment != null) {
-        if (values.environment == "Dev") {
-          values.gl_account = "63350";
-        } else if (values.environment == "Non-Cogs") {
-          values.gl_account = "63350";
-        } else if (values.environment == "Cogs") {
-          values.gl_account = "55100";
-        }
+    }
+  }, [values.department]);
+
+  useEffect(() => {
+    if (values.environment != null) {
+      if (values.environment === "Dev") {
+        setValues((oldValues) => ({ ...oldValues, gl_account: glaccount.Dev }));
+      } else if (values.environment === "Non-Cogs") {
+        setValues((oldValues) => ({
+          ...oldValues,
+          gl_account: glaccount.NonCogs,
+        }));
+      } else if (values.environment === "Cogs") {
+        setValues((oldValues) => ({
+          ...oldValues,
+          gl_account: glaccount.Cogs,
+        }));
       }
-    },
-    [values.department],
-    [values.environment]
-  );
+    }
+  }, [values.environment]);
 
   //Wait time function
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -290,11 +305,10 @@ export const Creation = (props) => {
 
   const validate = (formvalues) => {
     const errors = {};
-    // const nameregex = /^[ A-Za-z0-9_-]*$/;
-    // if (!nameregex.test(formvalues.name)) {
-    //   errors.name =
-    //     "Subscription name should contain only alphabets, numbers, - and _";
-    // }
+    const nameregex = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
+    if (!nameregex.test(formvalues.owner_email)) {
+      errors.name = "Owner Email is in incorrect format";
+    }
 
     return errors;
   };
@@ -315,7 +329,6 @@ export const Creation = (props) => {
                 placeholder="Ex: Devops_Subscription"
                 onChange={set("name")}
               />
-              <p className="formerror"> {formerrors.name}</p>
 
               <label>Team</label>
               <input
@@ -339,6 +352,16 @@ export const Creation = (props) => {
                 ))}
               </select>
 
+              <label>Cost center:</label>
+              <input
+                type="number"
+                required
+                min="1"
+                value={values.cost_center}
+                onChange={set("cost_center")}
+                readOnly
+              />
+
               <label> Environment </label>
               <select
                 required
@@ -353,15 +376,6 @@ export const Creation = (props) => {
                 ))}
               </select>
 
-              <label>Cost center:</label>
-              <input
-                type="number"
-                required
-                min="1"
-                value={values.cost_center}
-                onChange={set("cost_center")}
-              />
-
               <label>GL Account:</label>
               <input
                 type="number"
@@ -369,6 +383,7 @@ export const Creation = (props) => {
                 min="1"
                 value={values.gl_account}
                 onChange={set("gl_account")}
+                readOnly
               />
 
               <label>Owner Email</label>
@@ -378,6 +393,7 @@ export const Creation = (props) => {
                 placeholder="Ex: tom@rubrik.com"
                 onChange={set("owner_email")}
               />
+              <p className="formerror"> {formerrors.name}</p>
 
               <label>Owner Name</label>
               <input
