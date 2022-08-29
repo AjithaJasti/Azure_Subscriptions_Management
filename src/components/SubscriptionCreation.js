@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Createsubscriptions.css";
 import { v4 as uuid } from "uuid";
 import { LoadingSpinner } from "./LoadingSpinner";
-import { costcenter, glaccount } from "./Config";
+import { costcenter, glaccount } from "../Config";
 
 const department = ["IT", "Engineering", "Sales", "Support", "Infosec"];
-const environment = ["Dev", "Non-Cogs", "Cogs"];
+const environment = ["Non-Cogs", "Cogs"];
 
 let flag = 0;
 let subsdata = {};
@@ -74,9 +74,7 @@ export const Creation = (props) => {
 
   useEffect(() => {
     if (values.environment != null) {
-      if (values.environment === "Dev") {
-        setValues((oldValues) => ({ ...oldValues, gl_account: glaccount.Dev }));
-      } else if (values.environment === "Non-Cogs") {
+      if (values.environment === "Non-Cogs") {
         setValues((oldValues) => ({
           ...oldValues,
           gl_account: glaccount.NonCogs,
@@ -139,20 +137,20 @@ export const Creation = (props) => {
       }),
     };
 
-    // await fetch(
-    //   "https://management.azure.com/providers/Microsoft.Subscription/aliases/substest2208?api-version=2020-09-01",
-    //   dataoptions
-    // )
     await fetch(
-      "https://management.azure.com/providers/Microsoft.Subscription/aliases/" +
-        aliasname +
-        "?api-version=2020-09-01",
+      "https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01",
       dataoptions
     )
+      // await fetch(
+      //   "https://management.azure.com/providers/Microsoft.Subscription/aliases/" +
+      //     aliasname +
+      //     "?api-version=2020-09-01",
+      //   dataoptions
+      // )
       .then((response) => response.json())
       .then((data) => {
         subsdata = data.properties.subscriptionId;
-        alert(`Subscription created Successfully with ID \n ${subsdata}`);
+        console.log(`Subscription created Successfully with ID \n ${subsdata}`);
       })
       .catch((err) => {
         alert(err);
@@ -169,16 +167,16 @@ export const Creation = (props) => {
 
     while (checkingsubscription.status != 200 && flag <= 5) {
       console.log("checking before", checkingsubscription.status);
-      // await fetch(
-      //   "https://management.azure.com/providers/Microsoft.Subscription/aliases/substest2208?api-version=2020-09-01",
-      //   checkoptions
-      // )
       await fetch(
-        "https://management.azure.com/providers/Microsoft.Subscription/aliases/" +
-          aliasname +
-          "?api-version=2020-09-01",
+        "https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01",
         checkoptions
       )
+        // await fetch(
+        //   "https://management.azure.com/providers/Microsoft.Subscription/aliases/" +
+        //     aliasname +
+        //     "?api-version=2020-09-01",
+        //   checkoptions
+        // )
         .then((response) => {
           checkingsubscription = response;
         })
@@ -217,13 +215,10 @@ export const Creation = (props) => {
     )
       .then((response) => {
         if (response.ok) {
-          return alert("Tags Assigned Successfully");
+          return console.log("Tags Assigned Successfully");
         }
-        throw new Error("Tags not assigned");
+        throw new Error("Something wrong! Tags not assigned");
       })
-      // .then((data) => {
-      //   console.log("data", data);
-      // })
       .catch((error) => alert(error));
 
     //Creating Roles
@@ -251,15 +246,16 @@ export const Creation = (props) => {
     )
       .then((response) => {
         if (response.ok) {
-          return alert("Roles Assigned Successfully");
+          return alert(
+            `Subscription, Tags and Roles Created Successfully \n Subscription Id is ${subsdata}`
+          );
         }
-        throw new Error("Role Already Exists");
+        throw new Error("Something Wrong! Role Already Exists or not created");
       })
-      // .then((data) => {
-      //   console.log("data", data);
-      // })
+      .then((data) => {
+        console.log("data", data);
+      })
       .catch((error) => alert(error));
-
     setLoading(false);
   };
 
@@ -406,6 +402,7 @@ export const Creation = (props) => {
               <label>Purpose</label>
               <input
                 required
+                type="textarea"
                 value={values.purpose}
                 placeholder="Ex: Reason"
                 onChange={set("purpose")}

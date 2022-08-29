@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import "../styles/Tenantdropdown.css";
-import { tenantoptions } from "./authConfig";
+import { tenantoptions } from "../Config";
 
 class Tenantdropdown extends Component {
   state = {
@@ -30,10 +30,11 @@ class Tenantdropdown extends Component {
 
     return (
       <div className="Box">
-        <h1 className="tenanttitle"> Tenant Selection</h1>
+        <h1 className="tenanttitle"> Tenant Selection </h1>
 
         <div className="drop">
           <select
+            required
             value={this.state.tenantId}
             onChange={this.handleTenantChange}
           >

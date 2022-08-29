@@ -7,8 +7,7 @@ import Header from "./Header";
 import { SignOutButton } from "./SignOutButton";
 
 export const Applications = (props) => {
-  console.log("Applications data", props.applicationsdata.value);
-  const location = useLocation();
+  // console.log("Applications data", props.applicationsdata.value);
   const applicationsdata = props.applicationsdata.value;
   const [selectedUsers, setSelectedUsers] = useState([]);
   console.log(applicationsdata);
@@ -38,55 +37,61 @@ export const Applications = (props) => {
 
   return (
     <>
-      <div className="apptable">
-        {/* <h1 className="subslisthead"> Subscriptions List </h1> */}
-        {/* <div id="profile-div" className="listingsubscriptions"> */}
+      {applicationsdata ? (
+        <div className="apptable">
+          {/* <div id="profile-div" className="listingsubscriptions"> */}
 
-        <table className="applicationtable">
-          <thead>
-            <tr>
-              <th>
-                <input
-                  type="checkbox"
-                  checked={selectedUsers.length === applicationsdata.length}
-                  onChange={handleSelectAllUsers}
-                />
-              </th>
-              <th>Application ID</th>
-              <th>Application Name</th>
-              <th> Object Id</th>
-            </tr>
-          </thead>
-          <tbody>
-            {applicationsdata.map((applications) => (
-              <tr key={applications.id}>
-                <td>
-                  {" "}
+          <table className="applicationtable">
+            <thead>
+              <tr>
+                <th>
                   <input
                     type="checkbox"
-                    value={applications.id}
-                    checked={selectedUsers.includes(applications.id)}
-                    onChange={handleSelectUser}
+                    checked={selectedUsers.length === applicationsdata.length}
+                    onChange={handleSelectAllUsers}
                   />
-                </td>
-                <td>
-                  {" "}
-                  {applications.appId} <br />{" "}
-                </td>
-                <td> {applications.displayName} </td>
-                <td> {applications.id} </td>
+                </th>
+                <th>Application ID</th>
+                <th>Application Name</th>
+                <th> Object Id</th>
               </tr>
-            ))}
-          </tbody>
-          <Link to="/roleCreation" state={selectedUsers} className="rolelink">
-            <button type="submit" className="rolessubmit">
-              Next
-            </button>
-          </Link>
-        </table>
+            </thead>
+            <tbody>
+              {applicationsdata.map((applications) => (
+                <tr key={applications.id}>
+                  <td>
+                    {" "}
+                    <input
+                      type="checkbox"
+                      value={applications.id}
+                      checked={selectedUsers.includes(applications.id)}
+                      onChange={handleSelectUser}
+                    />
+                  </td>
+                  <td>
+                    {" "}
+                    {applications.appId} <br />{" "}
+                  </td>
+                  <td> {applications.displayName} </td>
+                  <td> {applications.id} </td>
+                </tr>
+              ))}
+            </tbody>
+            <Link to="/roleCreation" state={selectedUsers} className="rolelink">
+              <button type="submit" className="rolessubmit">
+                Next
+              </button>
+            </Link>
+          </table>
 
-        {/* </div> */}
-      </div>
+          {/* </div> */}
+        </div>
+      ) : (
+        <h1 className="subslisthead">
+          {" "}
+          No Applications to display with your search. Try with another{" "}
+        </h1>
+      )}
     </>
   );
 };

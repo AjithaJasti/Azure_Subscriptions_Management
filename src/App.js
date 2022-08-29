@@ -13,7 +13,7 @@ import View from "./components/View";
 import { Applications } from "./components/Applications";
 import { SelectApplication } from "./components/SelectApplication";
 import { SelectSubscription } from "./components/SelectSubscription";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Creation } from "./components/SubscriptionCreation";
 import { SignOutButton } from "./components/SignOutButton";
 import { TenantName } from "./components/TenantName";
@@ -55,6 +55,10 @@ export const MainContent = () => {
         console.log("GraphToken", localStorage.getItem("BearerToken"));
       })
       .catch((error) => alert("Insufficient permissions"));
+  };
+  const home = () => {
+    window.location.reload();
+    // navigate("/");
   };
 
   const getToken = (type) => {
@@ -122,6 +126,12 @@ export const MainContent = () => {
     <div className="App">
       <AuthenticatedTemplate>
         <div className="subscriptionbuttons">
+          {/* <a href="/" className="homebutton">
+            Home
+          </a> */}
+          <button className="homebutton" onClick={home}>
+            Home
+          </button>
           <button
             className="createsubscription"
             onClick={() => getToken("create")}

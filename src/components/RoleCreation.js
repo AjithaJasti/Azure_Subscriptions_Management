@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
 import { v4 as uuid } from "uuid";
 import { SignOutButton } from "./SignOutButton";
@@ -17,6 +17,7 @@ export const RoleCreation = () => {
     allowedtypes: "",
     guid: "",
   });
+  const [success, setSuccess] = useState(false);
 
   const set = (names) => {
     return ({ target: { value } }) => {
@@ -53,9 +54,12 @@ export const RoleCreation = () => {
     )
       .then((response) => {
         if (response.ok) {
-          return alert("Role Assigned Successfully");
+          // return alert("Role Assigned Successfully");
+          return setSuccess(true);
         }
-        throw new Error("Role already created or Role Id is incorrect");
+        throw new Error(
+          " Role already exists or Role Id is incorrect or Insufficient Permissions"
+        );
       })
       // .then((data) => {
       //   console.log("data", data);
@@ -80,8 +84,14 @@ export const RoleCreation = () => {
     } catch (e) {
       alert(`Role creation failed! ${e.message}`);
     }
-    //   console.log(values)
+    console.log(success);
   };
+
+  useEffect(() => {
+    if (success === true) {
+      alert(`Role Assigned Successfully`);
+    }
+  });
 
   return (
     <>
