@@ -1,45 +1,32 @@
-.Box {
-    position: fixed;
-    left: 17%;
-    right: 17%;
-    top: 24%;
-    bottom: 20%;
-    background: #2e5368;
-    border-radius: 62px;
-  }
-  
-  .tenanttitle {
-    position: absolute;
-    left: 40%;
-    top: 20%;
-    font-family: "Varela";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 52px;
-    color: #ffffff;
-  }
-  
-  .nextlink > button {
-    position: fixed;
-    left: 47%;
-    top: 60%;
-    background-color: rgb(192, 192, 192);
-    border: none;
-    padding: 10px 30px;
-    border-radius: 15px;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .drop > select {
-    position: absolute;
-    left: 30.21%;
-    right: 30.15%;
-    top: 44.85%;
-    background: #e2e2e2;
-    border-radius: 9px;
-    padding: 10px 5px;
-    cursor: pointer;
-  }
-  
+.tenantSelectionBox {
+  position: fixed;
+  left: 17%;
+  right: 17%;
+  top: 24%;
+  bottom: 20%;
+  background: #2e5368;
+  border-radius: 62px;
+}
+
+.tenantTitle {
+  position: absolute;
+  left: 40%;
+  top: 20%;
+  font-family: "Varela";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 52px;
+  color: #ffffff;
+}
+
+.divDropdown > select {
+  position: absolute;
+  left: 30.21%;
+  right: 30.15%;
+  top: 44.85%;
+  background: #e2e2e2;
+  border-radius: 9px;
+  padding: 10px 5px;
+  cursor: pointer;
+}

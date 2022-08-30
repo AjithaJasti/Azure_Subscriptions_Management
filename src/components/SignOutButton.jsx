@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useMsal } from "@azure/msal-react";
-import { callMsGraph } from "../graph";
-import { readRequest } from "./authConfig";
+import "../styles/SignOutButton.css";
 
 export const SignOutButton = () => {
   const { instance } = useMsal();
@@ -20,10 +19,6 @@ export const SignOutButton = () => {
   };
   return (
     <>
-      {/* <p> techops</p> */}
-
-      {/* {RequestProfileData()} */}
-
       <button
         variant="secondary"
         className="signoutbutton"

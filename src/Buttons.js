@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
   useMsal,
 } from "@azure/msal-react";
-import { loginRequest, readRequest } from "./components/authConfig";
 import { PageLayout } from "./components/PageLayout";
-import { createSubscription, listSubscription, getApplications } from "./graph";
-import "./styles/App.css";
-import { Registration } from "./components/Createsubscriptions";
-import View from "./components/View";
-import { Applications } from "./components/Applications";
-import { SelectApplication } from "./components/SelectApplication";
-import { SelectSubscription } from "./components/SelectSubscription";
-import { Link, useNavigate } from "react-router-dom";
-import { Creation } from "./components/SubscriptionCreation";
-import { SignOutButton } from "./components/SignOutButton";
-import { TenantName } from "./components/TenantName";
+import { loginRequest, readRequest } from "./components/authConfig";
+import { billingAccounts, listSubscription } from "./GraphManagement";
+import View from "./components/View/View";
+import { SelectSubscription } from "./components/Roles/SelectSubscription";
+import { Creation } from "./components/Create/SubscriptionCreation";
+import { TenantName } from "./components/ProfileTenantName";
+import "./styles/Buttons.css";
 
 export const MainContent = () => {
   const { instance, accounts } = useMsal();
@@ -26,23 +21,6 @@ export const MainContent = () => {
   const [create, setCreate] = useState(false);
   const [view, setView] = useState(false);
   const [applications, setApplications] = useState(false);
-  const navigate = useNavigate();
-  const [graphData, setGraphData] = useState(null);
-
-  const managementtoken = () => {
-    instance
-      .acquireTokenSilent({
-        ...loginRequest,
-        account: accounts[0],
-      })
-      .then((response) => {
-        localStorage.setItem("BearerMicrosoftToken", response.accessToken);
-        console.log(
-          "ManagementToken",
-          localStorage.getItem("BearerMicrosoftToken")
-        );
-      });
-  };
 
   const graphtoken = () => {
     instance
@@ -58,7 +36,6 @@ export const MainContent = () => {
   };
   const home = () => {
     window.location.reload();
-    // navigate("/");
   };
 
   const getToken = (type) => {
@@ -70,7 +47,7 @@ export const MainContent = () => {
           account: accounts[0],
         })
         .then((response) => {
-          createSubscription(response.accessToken).then((data) =>
+          billingAccounts(response.accessToken).then((data) =>
             setCreateData(data)
           );
         });
@@ -125,43 +102,33 @@ export const MainContent = () => {
   return (
     <div className="App">
       <AuthenticatedTemplate>
-        <div className="subscriptionbuttons">
-          {/* <a href="/" className="homebutton">
-            Home
-          </a> */}
-          <button className="homebutton" onClick={home}>
+        <div className="divButtons">
+          <button className="homeButton" onClick={home}>
             Home
           </button>
-          <button
-            className="createsubscription"
-            onClick={() => getToken("create")}
-          >
+          <button className="createButton" onClick={() => getToken("create")}>
             Create
           </button>
-          <button className="viewsubscription" onClick={() => getToken("view")}>
+          <button className="viewButton" onClick={() => getToken("view")}>
             View
           </button>
-          <button
-            className="applicationssubscription"
-            onClick={() => getToken("roles")}
-          >
+          <button className="rolesButton" onClick={() => getToken("roles")}>
             Roles
           </button>
-
           <TenantName />
         </div>
+
         {createData && create && <Creation sampleData={createData} />}
         {sampleData && view && <View sampleData={sampleData} />}
         {applicationsData && applications && (
           <SelectSubscription sampleData={applicationsData} />
         )}
-        {/* {applications && <SelectApplication/>} */}
       </AuthenticatedTemplate>
     </div>
   );
 };
 
-export default function App() {
+export default function Buttons() {
   return (
     <PageLayout>
       <MainContent />

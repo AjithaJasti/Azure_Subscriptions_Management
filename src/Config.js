@@ -21,6 +21,8 @@ export const tenantoptions = [
   },
 ];
 
+export const department = ["IT", "Engineering", "Sales", "Support", "Infosec"];
+export const environment = ["Non-Cogs", "Cogs"];
 export const costcenter = {
   IT: 7820,
   Engineering: 3546,
@@ -28,9 +30,7 @@ export const costcenter = {
   Support: 2920,
   Infosec: 7830,
 };
-
 export const glaccount = {
-  Dev: 63350,
   NonCogs: 63350,
   Cogs: 55100,
 };

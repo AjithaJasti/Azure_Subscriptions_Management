@@ -1,4 +1,4 @@
-.subslisthead {
+.titleSelectSubscription {
   margin: 2% 30% 0% 30%;
   font-family: "Varela";
   font-style: normal;
@@ -11,33 +11,25 @@
   border-radius: 15px;
 }
 
-.roletable {
+.SubscriptionTable {
   position: absolute;
   margin: 3% 27%;
   padding: 10% 1%;
 }
 
-table,
-th,
-td {
-  border: 1px solid grey;
-  border-collapse: collapse;
+.selectSubscriptionsSubmit {
+  position: absolute;
+  margin: 2% 10%;
+  margin-bottom: 10%;
+  padding: 1% 2%;
+  left: 35%;
+  background: #445ba8;
+  border-radius: 10px;
+  color: rgb(243, 243, 243);
+  border-color: rgb(255, 255, 255);
+  font-size: 19px;
 }
 
-th,
-td {
-  padding: 10px 80px;
-}
-
-th {
-  color: white;
-  background-color: black;
-}
-
-tr:nth-child(odd) {
-  background-color: #eeeeee;
-}
-
-tr:hover {
-  background-color: #dddddd;
+.selectSubscriptionsSubmit:hover {
+  background: #444d75;
 }

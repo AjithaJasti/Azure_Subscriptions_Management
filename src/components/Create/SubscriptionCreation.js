@@ -1,13 +1,8 @@
-import Header from "./Header";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "../styles/Createsubscriptions.css";
+import "../../styles/SubscriptionCreation.css";
 import { v4 as uuid } from "uuid";
 import { LoadingSpinner } from "./LoadingSpinner";
-import { costcenter, glaccount } from "../Config";
-
-const department = ["IT", "Engineering", "Sales", "Support", "Infosec"];
-const environment = ["Non-Cogs", "Cogs"];
+import { department, environment, costcenter, glaccount } from "../../Config";
 
 let flag = 0;
 let subsdata = {};
@@ -315,8 +310,10 @@ export const Creation = (props) => {
         <LoadingSpinner />
       ) : (
         <>
-          <h1 className="title">Enter details to create a subscription </h1>{" "}
-          <div className="divcreateform">
+          <h1 className="createTitle">
+            Enter details to create a subscription{" "}
+          </h1>{" "}
+          <div className="divCreateForm">
             <form onSubmit={onSubmit} className="createforms">
               <label>Subscription Name</label>
               <input
@@ -412,7 +409,6 @@ export const Creation = (props) => {
                 Create
               </button>
             </form>
-            {/* {isLoading && <LoadingSpinner />} */}
           </div>
         </>
       )}
@@ -423,10 +419,7 @@ export const Creation = (props) => {
 export default function SubscriptionCreation() {
   return (
     <>
-      {/* <Header /> */}
-      <div className="Subscriptions">
-        <Creation />
-      </div>
+      <Creation />
     </>
   );
 }

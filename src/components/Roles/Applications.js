@@ -1,10 +1,7 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import "../styles/View.css";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import "../styles/Applications.css";
-import Header from "./Header";
-import { SignOutButton } from "./SignOutButton";
+import "../../styles/Applications.css";
 
 export const Applications = (props) => {
   // console.log("Applications data", props.applicationsdata.value);
@@ -38,7 +35,7 @@ export const Applications = (props) => {
   return (
     <>
       {applicationsdata ? (
-        <div className="apptable">
+        <div className="divApplicationTable">
           {/* <div id="profile-div" className="listingsubscriptions"> */}
 
           <table className="applicationtable">
@@ -77,8 +74,8 @@ export const Applications = (props) => {
                 </tr>
               ))}
             </tbody>
-            <Link to="/roleCreation" state={selectedUsers} className="rolelink">
-              <button type="submit" className="rolessubmit">
+            <Link to="/roleCreation" state={selectedUsers}>
+              <button type="submit" className="applicationsSubmit">
                 Next
               </button>
             </Link>
@@ -87,7 +84,7 @@ export const Applications = (props) => {
           {/* </div> */}
         </div>
       ) : (
-        <h1 className="subslisthead">
+        <h1 className="noApplications">
           {" "}
           No Applications to display with your search. Try with another{" "}
         </h1>

@@ -7,12 +7,9 @@
 }
 
 .Header > h1 {
-  /* position: absolute;
-  left: 75%; */
   margin-right: 4%;
   padding-top: 1%;
   text-align: right;
-  /* right: 2%; */
   font-family: "Trirong";
   font-style: normal;
   font-weight: 700;

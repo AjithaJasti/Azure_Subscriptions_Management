@@ -1,9 +1,7 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import "../styles/SelectSubscription.css";
+import { Link } from "react-router-dom";
+import "../../styles/SelectSubscription.css";
 import { useState } from "react";
-// import "../styles/Applications.css";
-import Header from "./Header";
 
 export const SelectSubscription = (props) => {
   const subscriptionsdata = props.sampleData.value;
@@ -39,13 +37,13 @@ export const SelectSubscription = (props) => {
   return (
     <>
       {/* <Header /> */}
-      <h1 className="subslisthead">
+      <h1 className="titleSelectSubscription">
         {" "}
         Step 1 of 3 - Select a Subscription to create a role{" "}
       </h1>
 
       <div id="profile-div" className="listingsubscriptions">
-        <table className="roletable">
+        <table className="SubscriptionTable">
           <thead>
             <tr>
               <th>
@@ -72,18 +70,14 @@ export const SelectSubscription = (props) => {
                     onChange={handleSelectUser}
                   />
                 </td>
-                {/* <td>
-                  {" "}
-                  {subscription.id} <br />{" "}
-                </td> */}
                 <td> {subscription.displayName} </td>
                 <td> {subscription.state} </td>
               </tr>
             ))}
           </tbody>
 
-          <Link to="/selectApplication" className="rolelink">
-            <button type="submit" className="rolessubmit">
+          <Link to="/selectApplication">
+            <button type="submit" className="selectSubscriptionsSubmit">
               Next
             </button>
           </Link>

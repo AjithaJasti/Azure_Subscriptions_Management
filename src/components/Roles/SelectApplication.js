@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import "../styles/SelectApplication.css";
+import "../../styles/SelectApplication.css";
 import { useNavigate } from "react-router-dom";
 import { Applications } from "./Applications";
-import Header from "./Header";
+import Header from "../Header";
 import { useLocation } from "react-router-dom";
-import { SignOutButton } from "./SignOutButton";
+import { SignOutButton } from "../SignOutButton";
 
 export const SelectApplication = () => {
   console.log("Entered");
@@ -58,12 +58,15 @@ export const SelectApplication = () => {
 
   return (
     <>
+      <a href="/" className="home">
+        <img src="./images/Home.png" alt="Home" />
+      </a>
       <Header />
       <SignOutButton />
-      <h1 className="title">
+      <h1 className="roleTitle">
         Step 2 of 3 - Search for Application to create role{" "}
       </h1>{" "}
-      <div className="appform">
+      <div className="divAppForm">
         <form onSubmit={onSubmit} className="appforms">
           <input
             placeholder="Search for Application"

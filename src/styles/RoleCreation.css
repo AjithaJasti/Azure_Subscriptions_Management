@@ -25,33 +25,51 @@
   border-radius: 15px;
 }
 
-.divAppForm {
-  margin: 1% 20% 0% 15%;
+.Azureroles {
+  margin: 2% 30% 0% 30%;
+  font-family: "Varela";
+  font-style: normal;
+  font-size: 23px;
+  line-height: 50px;
+  color: #0a0909;
+  text-align: center;
+  /* background-color: #ccd5dc; */
+  border-radius: 15px;
+}
+
+.divRoleForm {
   padding: 1% 20%;
   color: black;
-  margin-left: 15%;
+  margin-left: 16%;
   margin-right: 15%;
 }
 
-.appforms > button {
-  margin-top: 5%;
+.roleForms > label {
+  display: inline-block;
+  margin-top: 10px;
+  width: 70%;
+  font-size: 20px;
+}
+
+.roleForms > button {
+  margin-top: 10%;
   margin-left: 32%;
-  width: 100px;
-  height: 40px;
+  width: 150px;
+  height: 50px;
   background: #445ba8;
   border-radius: 10px;
   color: rgb(243, 243, 243);
   border-color: rgb(255, 255, 255);
-  font-size: 15px;
+  font-size: 19px;
 }
 
-.appforms > button:hover {
+.roleForms > button:hover {
   background: #444d75;
 }
 
-.appforms > input,
-.appforms > select,
-.appforms > textarea {
+.roleForms > input,
+.roleForms > select,
+.roleForms > textarea {
   box-sizing: border-box;
   display: inline-block;
   width: 500px;
@@ -62,6 +80,6 @@
   border-radius: 10px;
 }
 
-.appforms > textarea {
+.roleForms > textarea {
   min-height: 100px;
 }

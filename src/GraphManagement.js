@@ -18,7 +18,7 @@ export async function listSubscription(accessToken) {
     .catch((error) => console.log(error));
 }
 
-export async function createSubscription(accessToken) {
+export async function billingAccounts(accessToken) {
   const headers = new Headers();
   const bearer = `Bearer ${accessToken}`;
   console.log("Management token", accessToken);
@@ -38,29 +38,7 @@ export async function createSubscription(accessToken) {
     .catch((error) => console.log(error));
 }
 
-export async function getApplications() {
-  const headers = new Headers();
-  const bearer = `Bearer ${localStorage.getItem("BearerToken")}`;
-  console.log("Graph Token", localStorage.getItem("BearerToken"));
-  headers.append("Authorization", bearer);
-  headers.append("ConsistencyLevel", "eventual");
-
-  const options = {
-    method: "GET",
-    headers: headers,
-  };
-
-  return fetch(
-    'https://graph.microsoft.com/v1.0/servicePrincipals?$search="displayName:' +
-      localStorage.getItem("appname") +
-      '"',
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.log(error));
-}
-
-export async function callMsGraph(accessToken) {
+export async function tenantInfo(accessToken) {
   const headers = new Headers();
   const bearer = `Bearer ${accessToken}`;
   console.log(accessToken);
@@ -77,7 +55,7 @@ export async function callMsGraph(accessToken) {
     .catch((error) => console.log(error));
 }
 
-export async function userMsGraph(accessToken) {
+export async function userInfo(accessToken) {
   const headers = new Headers();
   const bearer = `Bearer ${accessToken}`;
   console.log(accessToken);

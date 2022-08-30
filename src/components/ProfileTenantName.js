@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useMsal } from "@azure/msal-react";
-import { callMsGraph, userMsGraph } from "../graph";
+import { tenantInfo, userInfo } from "../GraphManagement";
 import { readRequest } from "./authConfig";
+import "../styles/ProfileTenantName.css";
 
 export const TenantName = () => {
   const { instance, accounts } = useMsal();
   const [graphData, setGraphData] = useState(null);
   const [userData, setUserData] = useState(null);
-
-  //   console.log(graphData);
   useEffect(() => {
     function RequestProfileData() {
-      //   const { instance, accounts } = useMsal();
       // Silently acquires an access token which is then attached to a request for MS Graph data
       instance
         .acquireTokenSilent({
@@ -19,14 +17,14 @@ export const TenantName = () => {
           account: accounts[0],
         })
         .then((response) => {
-          callMsGraph(response.accessToken).then((response) =>
+          tenantInfo(response.accessToken).then((response) =>
             setGraphData(response)
           );
-          userMsGraph(response.accessToken).then((response) =>
+          userInfo(response.accessToken).then((response) =>
             setUserData(response)
           );
         })
-        .catch((error) =>
+        .catch((e) =>
           alert(
             "Insufficient App registration permissions to display Tenant Name and User name "
           )
@@ -37,9 +35,6 @@ export const TenantName = () => {
 
   return (
     <>
-      {/* <p> techops</p> */}
-
-      {/* {RequestProfileData()} */}
       {userData && graphData ? (
         <div className="TenantUserName">
           <h1 className="TenantName">

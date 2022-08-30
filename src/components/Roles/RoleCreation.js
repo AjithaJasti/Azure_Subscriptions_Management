@@ -1,11 +1,11 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Header from "./Header";
+import Header from "../Header";
 import { v4 as uuid } from "uuid";
-import { SignOutButton } from "./SignOutButton";
+import { SignOutButton } from "../SignOutButton";
+import "../../styles/RoleCreation.css";
 
-const allowedtypes = ["User", "Application", '"User" , "Application'];
 export const RoleCreation = () => {
   const location = useLocation();
   const objId = location.state;
@@ -95,11 +95,14 @@ export const RoleCreation = () => {
 
   return (
     <>
-      {/* <Navbar bg="primary" variant="dark"> */}
+      <a href="/" className="home">
+        <img src="./images/Home.png" alt="Home" />
+      </a>
       <Header />
       <SignOutButton />
-      {/* </Navbar> */}
-      <h1 className="title">Step 3 of 3 - Enter Role ID to create the role </h1>
+      <h1 className="roleTitle">
+        Step 3 of 3 - Enter Role ID to create the role{" "}
+      </h1>
       <p className="Azureroles">
         {" "}
         Click{" "}
@@ -112,8 +115,8 @@ export const RoleCreation = () => {
         </a>{" "}
         to get the role id
       </p>
-      <div className="tagform">
-        <form onSubmit={onSubmit} className="forms">
+      <div className="divRoleForm">
+        <form onSubmit={onSubmit} className="roleForms">
           <label>Role Id</label>
           <input
             placeholder="Reader roleId Ex: acdd72a7-3385-48ef-bd42-f606fba81ae7"
@@ -121,17 +124,6 @@ export const RoleCreation = () => {
             value={values.roleName}
             onChange={set("roleName")}
           />
-
-          {/* <label> Allowed Member Types </label>
-            <select required value={values.allowedtypes} onChange={set("allowedtypes")}>
-              <option value="">Select Environment </option>
-              {allowedtypes.map((c) => (
-                <option key={c} value={c}>{c}</option>
-              ))}
-            </select> */}
-          {/* 
-            <label>GUID</label>
-            <input value={values.guid} onChange={set("guid")} /> */}
 
           <button type="submit">Add</button>
         </form>

@@ -29,10 +29,10 @@ class Tenantdropdown extends Component {
     // console.log(this.state)
 
     return (
-      <div className="Box">
-        <h1 className="tenanttitle"> Tenant Selection </h1>
+      <div className="tenantSelectionBox">
+        <h1 className="tenantTitle"> Tenant Selection </h1>
 
-        <div className="drop">
+        <div className="divDropdown">
           <select
             required
             value={this.state.tenantId}

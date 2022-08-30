@@ -1,0 +1,33 @@
+.TenantUserName {
+  margin: 5px;
+  padding: 1px;
+  border: 1px solid;
+  border-color: rgb(135, 133, 133);
+}
+
+.TenantName {
+  margin: 5px 5px 0px;
+  text-align: right;
+  color: rgb(255, 246, 246);
+  font-size: 13px;
+}
+
+.UserName {
+  margin: 5px;
+  text-align: right;
+  color: rgb(255, 246, 246);
+  font-size: 13px;
+}
+
+.Unavailable {
+  display: inline-block;
+  margin: 0.5%;
+  text-align: right;
+  margin-left: 19%;
+  margin-right: 4%;
+  border: 1px solid;
+  border-color: rgb(149, 148, 148);
+  padding: 0.5% 1%;
+  color: rgb(255, 246, 246);
+  font-size: 18px;
+}
