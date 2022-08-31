@@ -8,7 +8,8 @@ let flag = 0;
 let subsdata = {};
 let objId = {};
 let checkingsubscription = {};
-let aliasname = uuid();
+// let aliasname = uuid();
+let aliasname = "sampleAlias";
 
 export const Creation = (props) => {
   // console.log(
@@ -133,15 +134,11 @@ export const Creation = (props) => {
     };
 
     await fetch(
-      "https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01",
+      "https://management.azure.com/providers/Microsoft.Subscription/aliases/" +
+        aliasname +
+        "?api-version=2020-09-01",
       dataoptions
     )
-      // await fetch(
-      //   "https://management.azure.com/providers/Microsoft.Subscription/aliases/" +
-      //     aliasname +
-      //     "?api-version=2020-09-01",
-      //   dataoptions
-      // )
       .then((response) => response.json())
       .then((data) => {
         subsdata = data.properties.subscriptionId;
@@ -161,17 +158,13 @@ export const Creation = (props) => {
     };
 
     while (checkingsubscription.status != 200 && flag <= 5) {
-      console.log("checking before", checkingsubscription.status);
+      // console.log("checking before", checkingsubscription.status);
       await fetch(
-        "https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01",
+        "https://management.azure.com/providers/Microsoft.Subscription/aliases/" +
+          aliasname +
+          "?api-version=2020-09-01",
         checkoptions
       )
-        // await fetch(
-        //   "https://management.azure.com/providers/Microsoft.Subscription/aliases/" +
-        //     aliasname +
-        //     "?api-version=2020-09-01",
-        //   checkoptions
-        // )
         .then((response) => {
           checkingsubscription = response;
         })
