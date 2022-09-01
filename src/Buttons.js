@@ -22,6 +22,7 @@ export const MainContent = () => {
   const [view, setView] = useState(false);
   const [applications, setApplications] = useState(false);
 
+  //Acquiring graph Token
   const graphtoken = () => {
     instance
       .acquireTokenSilent({
