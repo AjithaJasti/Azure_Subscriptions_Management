@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "../../styles/Applications.css";
 
+//Listing searched Applications
 export const Applications = (props) => {
   // console.log("Applications data", props.applicationsdata.value);
   const applicationsdata = props.applicationsdata.value;
@@ -36,8 +37,6 @@ export const Applications = (props) => {
     <>
       {applicationsdata ? (
         <div className="divApplicationTable">
-          {/* <div id="profile-div" className="listingsubscriptions"> */}
-
           <table className="applicationtable">
             <thead>
               <tr>
@@ -80,8 +79,6 @@ export const Applications = (props) => {
               </button>
             </Link>
           </table>
-
-          {/* </div> */}
         </div>
       ) : (
         <h1 className="noApplications">

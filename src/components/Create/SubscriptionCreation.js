@@ -9,7 +9,8 @@ let subsdata = {};
 let objId = {};
 let checkingsubscription = {};
 // let aliasname = uuid();
-let aliasname = "sampleAlias";
+// let aliasname = "sampleAlias";
+let aliasname = "demotest";
 
 export const Creation = (props) => {
   // console.log(

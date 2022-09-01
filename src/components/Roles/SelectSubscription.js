@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "../../styles/SelectSubscription.css";
 import { useState } from "react";
 
+//Displaying a list of available subscriptions. So the user can select one or many.
+
 export const SelectSubscription = (props) => {
   const subscriptionsdata = props.sampleData.value;
 

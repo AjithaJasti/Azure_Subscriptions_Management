@@ -1,4 +1,4 @@
-# React single-page application built with MSAL React and Microsoft identity platform
+# Azure Subscriptions Management
 
 This application demonstrates the Azure portal login, logout, conditionally render components to authenticated users, and acquire an access token for a protected resource such as Microsoft Graph. It creates and lists the subscriptions available in the tenant.
 
@@ -39,14 +39,18 @@ This sample demonstrates the following MSAL React concepts:
 ### Setup
 
 1. [Register a new application](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) in the [Azure Portal](https://portal.azure.com). Ensure that the application is enabled for the [authorization code flow with PKCE](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow). This will require that you redirect URI configured in the portal is of type `SPA`.
-2. Make sure to assign the following "Delegated" API permissions to your application:
+
+2. Make sure to assign the following `Delegated` API permissions to your application:
    a. user_impersonation
    b. Application.Read.All
    c. Application.ReadWrite.All
    d. Directory.Read.All
    e. User.Read
+
 3. Atter assigning the permissions, makesure to give the clientId and tenantId in the tenantoptions of Config.js file.
+
 4. Clone this repository `git clone https://github.com/AjithaJasti/Azure_Subscriptions_Management.git`
+
 5. On the command line, navigate to the root of the repository, and run `npm install` to install the project dependencies via npm.
 
 ## Running the sample

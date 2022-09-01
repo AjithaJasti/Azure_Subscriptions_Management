@@ -7,10 +7,9 @@ import Header from "../Header";
 import { useLocation } from "react-router-dom";
 import { SignOutButton } from "../SignOutButton";
 
+//Searching for an application based on name
 export const SelectApplication = () => {
   console.log("Entered");
-  const location = useLocation();
-  const navigate = useNavigate();
   const [values, setValues] = useState({
     appname: "",
   });
@@ -46,9 +45,6 @@ export const SelectApplication = () => {
   const onSubmit = (event) => {
     event.preventDefault(); // Prevent default submission
     try {
-      // setValues({
-      //   appname: "",
-      // });
       saveFormData().then((response) => setApplicationsdata(response));
     } catch (e) {
       alert(`Registration failed! ${e.message}`);
@@ -77,7 +73,6 @@ export const SelectApplication = () => {
         </form>
       </div>
       {applicationsdata && <Applications applicationsdata={applicationsdata} />}
-      {/* )} */}
     </>
   );
 };

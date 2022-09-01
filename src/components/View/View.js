@@ -1,6 +1,8 @@
 import React from "react";
 import "../../styles/View.css";
 
+//Listing All the Subscriptions available in the tenant
+
 export default function View(props) {
   // console.log(props.sampleData);
   return (
